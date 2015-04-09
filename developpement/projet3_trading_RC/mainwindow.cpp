@@ -15,8 +15,6 @@ MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
 {
 
-
-
     // Fixe des dimensions à l'ouverture de la fenêtre principale, et indique le titre de la fenêtre.
     setGeometry(50,50,780,300);
     setWindowTitle("Fluctu'Action");
