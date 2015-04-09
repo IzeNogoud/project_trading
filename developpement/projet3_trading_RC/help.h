@@ -1,0 +1,19 @@
+#ifndef HELP_H
+#define HELP_H
+
+#include <QDialog>
+#include <QPushButton>
+
+
+class Help : public QDialog
+{
+public:
+    Help(QWidget *parent);
+    ~Help();
+
+private:
+    QPushButton* closeButton;
+};
+
+#endif // HELP_H
+
