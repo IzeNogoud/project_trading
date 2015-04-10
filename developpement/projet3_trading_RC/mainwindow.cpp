@@ -54,9 +54,6 @@ MainWindow::MainWindow(QWidget *parent)
 
     qDebug() << dateFinString;
 
-    QPushButton* filtrerAffichage = new QPushButton("Filtrer", this);
-    filtrerAffichage->move(580,60);
-
     loadWebView();
 
     QTimer* timer = new QTimer;

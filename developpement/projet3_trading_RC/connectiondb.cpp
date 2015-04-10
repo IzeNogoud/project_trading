@@ -31,7 +31,7 @@ ConnectionDB::ConnectionDB(QWidget *parent, QString debut, QString fin, QString 
         sqlRequete += "Haut real," ;
         sqlRequete += "Bas real," ;
         sqlRequete += "Var real," ;
-        sqlRequete += "Date datetime )" ;
+        sqlRequete += "Date varchar(50) )" ;
 
 
         QSqlQuery resultRequet = db.exec(sqlRequete);
