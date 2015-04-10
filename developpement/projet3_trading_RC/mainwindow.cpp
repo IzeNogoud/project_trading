@@ -16,7 +16,8 @@ MainWindow::MainWindow(QWidget *parent)
 {
 
     // Fixe des dimensions à l'ouverture de la fenêtre principale, et indique le titre de la fenêtre.
-    setGeometry(50,50,780,300);
+    setFixedSize(780,330);
+    move(200,200);
     setWindowTitle("Fluctu'Action");
     setWindowIcon(QIcon("fluctu_opt.png"));
 
@@ -38,6 +39,16 @@ MainWindow::MainWindow(QWidget *parent)
 
     eurUsdAct = toolBar->addAction( "Euro / Dollar", this, SLOT(showEurUsd()));
     eurChfAct = toolBar->addAction( "Euro / Franc Suisse", this, SLOT(showEurChf()));
+
+
+    QDateEdit* dateDebut = new QDateEdit(QDate::currentDate(),this);
+    dateDebut->move(350,60);
+
+    QDateEdit* dateFin = new QDateEdit(QDate::currentDate(),this);
+    dateFin->move(460,60);
+
+    QPushButton* filtrerAffichage = new QPushButton("Filtrer", this);
+    filtrerAffichage->move(580,60);
 
     loadWebView();
 

@@ -40,13 +40,15 @@ ConnectionDB::ConnectionDB(QWidget *parent, QString devise)
         model = new QSqlTableModel( NULL, db ) ;
         model->setTable("deviseTable");
         model->setFilter("Nom like'%" + devise + "'" );
+        //model->setFilter("Date");
+        model->setSort(1,Qt::AscendingOrder);
         model->select();
 
 
-        QTableView* view = new QTableView(parent) ;
-        view->setGeometry(20,70,730,200);
-        view->setModel( model );
 
+        QTableView* view = new QTableView(parent) ;
+        view->setGeometry(20,100,739,200);
+        view->setModel( model );
 
         view->show();
 
