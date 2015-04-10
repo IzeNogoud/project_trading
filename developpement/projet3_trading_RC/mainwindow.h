@@ -52,6 +52,9 @@ private:
 
     QString nom, achat, vente, haut, bas, var, date;
 
+    QString dateDebutString;
+    QString dateFinString;
+
 
 
 

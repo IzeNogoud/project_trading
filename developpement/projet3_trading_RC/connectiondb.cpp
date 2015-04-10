@@ -12,7 +12,7 @@
 #include <QWebFrame>
 
 
-ConnectionDB::ConnectionDB(QWidget *parent, QString devise)
+ConnectionDB::ConnectionDB(QWidget *parent, QString debut, QString fin, QString devise)
 {
     // Connection database
 
@@ -39,12 +39,9 @@ ConnectionDB::ConnectionDB(QWidget *parent, QString devise)
 
         model = new QSqlTableModel( NULL, db ) ;
         model->setTable("deviseTable");
-        model->setFilter("Nom like'%" + devise + "'" );
-        //model->setFilter("Date");
-        model->setSort(1,Qt::AscendingOrder);
+        model->setFilter("Nom like'%" + devise + "' AND Date >='" + debut + "'" + " AND date <='" + fin + "'" );
+        model->setSort(1,Qt::DescendingOrder);
         model->select();
-
-
 
         QTableView* view = new QTableView(parent) ;
         view->setGeometry(20,100,739,200);
@@ -61,5 +58,6 @@ ConnectionDB::~ConnectionDB()
 {
 
 }
+
 
 

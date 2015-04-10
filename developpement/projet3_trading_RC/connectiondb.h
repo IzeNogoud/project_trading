@@ -17,13 +17,12 @@ class ConnectionDB : public QObject
     Q_OBJECT
 
 public:
-    ConnectionDB(QWidget *parent, QString devise);
+    ConnectionDB(QWidget *parent, QString debut, QString fin, QString devise);
     ~ConnectionDB();
 
 
 
 public slots:
-
 
 
 private:

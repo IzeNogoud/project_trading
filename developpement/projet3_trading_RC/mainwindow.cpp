@@ -41,11 +41,18 @@ MainWindow::MainWindow(QWidget *parent)
     eurChfAct = toolBar->addAction( "Euro / Franc Suisse", this, SLOT(showEurChf()));
 
 
-    QDateEdit* dateDebut = new QDateEdit(QDate::currentDate(),this);
+    QDateEdit* dateDebut = new QDateEdit(this);
     dateDebut->move(350,60);
+    dateDebutString = dateDebut->date().toString("dd.MM.yyyy");
+
+    qDebug() << dateDebutString;
 
     QDateEdit* dateFin = new QDateEdit(QDate::currentDate(),this);
     dateFin->move(460,60);
+    dateFinString = dateFin->date().toString("dd.MM.yyyy");
+    connect(dateFin, SIGNAL(dateChanged(QDate)), this, SLOT(showEurChf()));
+
+    qDebug() << dateFinString;
 
     QPushButton* filtrerAffichage = new QPushButton("Filtrer", this);
     filtrerAffichage->move(580,60);
@@ -104,7 +111,7 @@ void MainWindow::elementSearch()
                 requete.bindValue(3, element2.at(3).toPlainText());
                 requete.bindValue(4, element2.at(4).toPlainText());
                 requete.bindValue(5, element2.at(6).toPlainText());
-                requete.bindValue(6, QDate::currentDate().toString("dd MMMM yyyy"));
+                requete.bindValue(6, QDate::currentDate().toString("dd.MM.yyyy"));
                 qDebug() << element2.at(0).toPlainText();
                 qDebug() << element.at(i).toPlainText();
                 requete.exec();
@@ -133,12 +140,12 @@ void MainWindow::Aide()
 
 void MainWindow::showEurUsd()
 {
-    ConnectionDB(this, "EUR/USD");
+    ConnectionDB(this, dateDebutString, dateFinString, "EUR/USD");
 }
 
 void MainWindow::showEurChf()
 {
-    ConnectionDB(this, "EUR/CHF");
+    ConnectionDB(this, dateDebutString, dateFinString, "EUR/CHF");
 }
 
 void MainWindow::configUrl()
