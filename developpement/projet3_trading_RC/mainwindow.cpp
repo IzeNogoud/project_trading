@@ -70,32 +70,36 @@ MainWindow::~MainWindow()
 
 }
 
+//Charge la page entière de l'URL renseigner
 void MainWindow::loadWebView()
 {
     webView = new QWebView;
     webView->load(QUrl("http://fxrates.fr.forexprostools.com/index.php?force_lang=5&pairs_ids=1;10"));
-    connect(webView, SIGNAL(loadFinished(bool)), this, SLOT(elementSearch()));
-    webView->hide();
+    connect(webView, SIGNAL(loadFinished(bool)), this, SLOT(elementSearch())); //Appel un slot à la fin du chargement
+    webView->hide(); // cache le widget généré
 
 }
 
+//Recherche dans la page les lignes du tableau uis chaque colone afin de la rentré dans la base de données
 void MainWindow::elementSearch()
 {
+    //connection a la base pour l'insertion
     db = QSqlDatabase::addDatabase("QSQLITE");
     db.setDatabaseName("forex.db");
 
+    //récupère le corp de la page pour pouvoir le manipuler
     docElement = webView->page()->mainFrame()->documentElement();
-    element = docElement.findAll("tr");
+    element = docElement.findAll("tr");//Récupère toute les lignes (tr)
 
-
+    //Boucle sur les lignes
     for(int i (0); i<element.count() ; i++)
     {
-        element2 = element.at(i).findAll("td");
+        element2 = element.at(i).findAll("td");//Récupère toutes les colonnes (td)
 
 
         QSqlQuery requete;
 
-
+            //Ajoute les données récupérer dans les bon champs de la base de données
             if(!db.open()) qDebug()<< "Ne peut pas ouvrir le fichier de la base de données pour l'insertion" ;
             else
             {
@@ -122,29 +126,33 @@ void MainWindow::elementSearch()
 
 }
 
+//Appel la page A propos de
 void MainWindow::About()
 {
     Help* about = new Help(this);
     about->exec();
 }
 
+//Appel la page FAQ
 void MainWindow::Aide()
 {
     Faq* faq = new Faq(this);
     faq->exec();
 }
 
-
+//Affiche le tableau de devise euro / dollar
 void MainWindow::showEurUsd()
 {
     ConnectionDB(this, dateDebutString, dateFinString, "EUR/USD");
 }
 
+//Affiche le tableau de devise euro / franc suisse
 void MainWindow::showEurChf()
 {
     ConnectionDB(this, dateDebutString, dateFinString, "EUR/CHF");
 }
 
+//Appel la page configuration
 void MainWindow::configUrl()
 {
     Config* config = new Config(this);

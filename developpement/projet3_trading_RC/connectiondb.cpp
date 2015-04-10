@@ -15,15 +15,13 @@
 ConnectionDB::ConnectionDB(QWidget *parent, QString debut, QString fin, QString devise)
 {
     // Connection database
-
     db = QSqlDatabase::addDatabase("QSQLITE");
     db.setDatabaseName("forex.db");
     if(!db.open()) qDebug()<< "Ne peut pas ouvrir le fichier de la base de données" ;
     else
     {
-        //qDebug() << "Connection OK" ;
+        //Crée la table "deviseTable" si elle n'existe pas
         QString sqlRequete;
-
         sqlRequete = "create table if not exists deviseTable (" ;
         sqlRequete += "Nom varchar(50)," ;
         sqlRequete += "Achat real,";
@@ -35,21 +33,22 @@ ConnectionDB::ConnectionDB(QWidget *parent, QString debut, QString fin, QString 
 
 
         QSqlQuery resultRequet = db.exec(sqlRequete);
-        //qDebug() << resultRequet.lastError();
 
+        //Requete SQL
         model = new QSqlTableModel( NULL, db ) ;
         model->setTable("deviseTable");
         model->setFilter("Nom like'%" + devise + "' AND Date >='" + debut + "'" + " AND date <='" + fin + "'" );
         model->setSort(1,Qt::DescendingOrder);
         model->select();
 
+        //Initialise le tableau a afficher
         QTableView* view = new QTableView(parent) ;
         view->setGeometry(20,100,739,200);
         view->setModel( model );
 
+        //Affiche le tableau avec les données récupérées de la base de données
         view->show();
 
-        //db.close();
     }
 
 }

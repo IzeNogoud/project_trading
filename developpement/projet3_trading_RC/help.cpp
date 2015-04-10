@@ -6,16 +6,18 @@
 
 Help::Help(QWidget *parent = 0) : QDialog(parent)
 {
-    setWindowTitle("A propos de Fluctu'Action"); //Titre de la fenetre
+    //Titre de la fenetre
+    setWindowTitle("A propos de Fluctu'Action");
 
-
+    //Création d'un widget pour les onglets
     QTabWidget *Tab = new QTabWidget(this);
-    Tab->setGeometry(15, 20, 470, 350);
+    Tab->setGeometry(15, 20, 470, 350); // fixe la position et la taille du widget
 
+    //Création des labels ou le texte apparaitra
     QLabel *frenchText = new QLabel;
     QLabel *englishText = new QLabel;
 
-    //Insertion du texte
+    //Insertion du texte en français
     frenchText->setText("<b>A propos</b><br /><br />"
                                   "<i>Nom</i> : Fluctu'Action<br /><br />"
                                   "<i>Version</i>  :  1.0<br /><br />"
@@ -27,6 +29,7 @@ Help::Help(QWidget *parent = 0) : QDialog(parent)
                                   " Y COMPRIS DE GARANTIE DE LA CONCEPTION, DE QUALITÉ MARCHANDE ET<br />"
                                   " D'ADÉQUATION À UN USAGE PARTICULIER. <br /><br />"); //Insertion du texte
 
+    //Insertion du texte en anglais
     englishText->setText("<b>About</b><br /><br />"
                                   "<i>Name</i> : Fluctu'Action<br /><br />"
                                   "<i>Version</i>  :  1.0<br /><br />"
@@ -40,7 +43,7 @@ Help::Help(QWidget *parent = 0) : QDialog(parent)
 
 
 
-
+    //Ajoute les textes dans le widget des onglets
     Tab->addTab(frenchText, "Français");
     Tab->addTab(englishText, "English");
 }
