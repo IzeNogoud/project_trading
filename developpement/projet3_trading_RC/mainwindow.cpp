@@ -9,6 +9,7 @@
 #include <QWebFrame>
 #include <QNetworkAccessManager>
 #include <QSqlQuery>
+#include <QSqlRecord>
 
 
 MainWindow::MainWindow(QWidget *parent)
@@ -42,11 +43,8 @@ MainWindow::MainWindow(QWidget *parent)
     connect(eurUsdAct, SIGNAL(triggered()), this, SLOT(showEurUsd()));
 
 
-
     eurChfAct = toolBar->addAction( "Euro / Franc Suisse" );
     connect(eurChfAct, SIGNAL(triggered()), this, SLOT(showEurChf()));
-    //eurChfAct->setVisible(false);
-
 
 
     dateDebut = new QDateEdit(this);
@@ -108,6 +106,18 @@ void MainWindow::elementSearch()
             if(!db.open()) qDebug()<< "Ne peut pas ouvrir le fichier de la base de données pour l'insertion" ;
             else
             {
+                QSqlQueryModel* model = new QSqlQueryModel;
+                model->setQuery(QString("SELECT Nom, Var FROM deviseTable WHERE Nom like '%" + element2.at(0).toPlainText() + "' ORDER BY Heure DESC limit 1"), db);
+                qDebug() << model->record(0).value(0).toString();
+                qDebug() << element2.at(0).toPlainText();
+                qDebug() << model->record(0).value(1).toString();
+                qDebug() << element2.at(6).toPlainText();
+
+
+                if( ( (model->record(0).value(0).toString()) == (element2.at(0).toPlainText()) ) &&
+                        ( (model->record(0).value(1).toString()) != (element2.at(6).toPlainText()) ) ||
+                        ( ( (model->record(0).value(0).toString()) == "") && ( (model->record(0).value(1).toString()) == "")) )
+                {
 
                 requete.prepare("INSERT INTO deviseTable (Nom, Achat, Vente, Haut, Bas, Var, Date, Heure)"
                                 "VALUES (:Nom, :Achat, :Vente, :Haut, :Bas, :Var, :Date, :Heure)" );
@@ -119,10 +129,9 @@ void MainWindow::elementSearch()
                 requete.bindValue(5, element2.at(6).toPlainText());
                 requete.bindValue(6, QDate::currentDate().toString("dd.MM.yyyy"));
                 requete.bindValue(7, QTime::currentTime().toString("hh:mm:ss"));
-                //qDebug() << element2.at(0).toPlainText();
-                //qDebug() << element.at(i).toPlainText();
-                requete.exec();
 
+                requete.exec();
+                }
             }
     }
 }
@@ -144,25 +153,20 @@ void MainWindow::Aide()
 /** Affiche le tableau de devise euro / dollar */
 void MainWindow::showEurUsd()
 {
+    dateDebutString = dateDebut->date().toString("dd.MM.yyyy");
+    dateFinString = dateFin->date().toString("dd.MM.yyyy");
     ConnectionDB(this, dateDebutString, dateFinString, "EUR/USD");
 }
 
 /** Affiche le tableau de devise euro / franc suisse */
 void MainWindow::showEurChf()
 {
-    dateDebutString = dateDebut->date().toString("dd.MM.yyyy");
-    dateFinString = dateFin->date().toString("dd.MM.yyyy");
-    ConnectionDB(this, dateDebutString, dateFinString, "EUR/CHF");
+        dateDebutString = dateDebut->date().toString("dd.MM.yyyy");
+        dateFinString = dateFin->date().toString("dd.MM.yyyy");
+        ConnectionDB(this, dateDebutString, dateFinString, "EUR/CHF");
+
 }
 
-void MainWindow::showDevise(const QString &devise)
-{
-
-    dateDebutString = dateDebut->date().toString("dd.MM.yyyy");
-    dateFinString = dateFin->date().toString("dd.MM.yyyy");
-    qDebug() << devise ;
-    ConnectionDB(this, dateDebutString, dateFinString, devise);
-}
 
 
 /** Appel la page configuration */
