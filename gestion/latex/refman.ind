@@ -1,0 +1,58 @@
+\begin{theindex}
+
+  \item {About}
+    \subitem {Main\-Window}, 8
+  \item {Aide}, 5
+    \subitem {Main\-Window}, 9
+
+  \indexspace
+
+  \item {Config}, 5
+    \subitem {Config}, 5
+  \item {config\-Url}
+    \subitem {Main\-Window}, 9
+  \item {Connection\-D\-B}, 6
+    \subitem {Connection\-D\-B}, 6
+    \subitem {Connection\-D\-B}, 6
+
+  \indexspace
+
+  \item {element\-Search}
+    \subitem {Main\-Window}, 9
+
+  \indexspace
+
+  \item {Faq}, 6
+    \subitem {Faq}, 7
+
+  \indexspace
+
+  \item {Help}, 7
+    \subitem {Help}, 8
+
+  \indexspace
+
+  \item {load\-Web\-View}
+    \subitem {Main\-Window}, 9
+
+  \indexspace
+
+  \item {Main\-Window}, 8
+    \subitem {About}, 8
+    \subitem {Aide}, 9
+    \subitem {config\-Url}, 9
+    \subitem {element\-Search}, 9
+    \subitem {load\-Web\-View}, 9
+    \subitem {Main\-Window}, 8
+    \subitem {Main\-Window}, 8
+    \subitem {show\-Eur\-Chf}, 9
+    \subitem {show\-Eur\-Usd}, 9
+
+  \indexspace
+
+  \item {show\-Eur\-Chf}
+    \subitem {Main\-Window}, 9
+  \item {show\-Eur\-Usd}
+    \subitem {Main\-Window}, 9
+
+\end{theindex}

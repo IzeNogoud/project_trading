@@ -23,14 +23,21 @@ public slots:
     void        showEurUsd();
     void        showEurChf();
 
+    void        showDevise(const QString &devise);
+
+
+
     void        configUrl();
-
     void        elementSearch();
-
     void        loadWebView();
+
+signals:
+    void        triggered(const QString &);
 
 
 private:
+
+    QSignalMapper*      signalMapper;
 
     QMenuBar*           barMenu ;
     QMenu*              aboutMenu ;
@@ -54,6 +61,9 @@ private:
 
     QString dateDebutString;
     QString dateFinString;
+    QDateEdit* dateFin;
+    QDateEdit* dateDebut;
+
 
 
 

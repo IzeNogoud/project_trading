@@ -1,3 +1,16 @@
+/**
+* \brief Cette classe permet d'ouvrir une fenetre "FAQ" en français ainsi quand anglais, qui permet a l'utilisateur de
+* coomprendre l'utilisation de l'application
+* ------------
+* ------------
+* \author IzeNogoud
+* ------------
+* \date 24 Mars 2015
+*
+*/
+
+
+
 #include "faq.h"
 #include <QLabel>
 #include <QVBoxLayout>
@@ -5,18 +18,18 @@
 
 Faq::Faq(QWidget *parent) : QDialog(parent)
 {
-    //Ajoute le titre de la fenetre
+    /** Ajoute le titre de la fenetre */
     setWindowTitle("FAQ");
 
-    //Création d'un widget pour les onglets
+    /** Création d'un widget pour les onglets */
     QTabWidget *Tab = new QTabWidget(this);
-    Tab->setGeometry(30, 20, 770, 450); // fixe la position et la taille du widget
+    Tab->setGeometry(30, 20, 770, 450); /** fixe la position et la taille du widget */
 
-    //Création des labels ou le texte apparaitra
+    /** Création des labels ou le texte apparaitra */
     QLabel *frenchText = new QLabel;
     QLabel *englishText = new QLabel;
 
-    //Insertion du texte en français
+    /** Insertion du texte en français */
     frenchText->setText("<b><i>Comment utiliser Flutu'Action ?</i></b><br /><br />"
                         "Fluctu'Action est une application permettant de suivre en temps réel"
                         " l'évolution des cotations, en recherchant dynamiquement<br /> les données sur"
@@ -33,7 +46,7 @@ Faq::Faq(QWidget *parent) : QDialog(parent)
 
 
 
-    //Insertion du texte en anglais
+    /** Insertion du texte en anglais */
     englishText->setText("<b><i>What is Fluctu'Action ? </i></b><br /><br />"
                          "Fluctu'Action is an application that follows up in real time"
                          " the evolution of quotations by dynamically seeking data<br /> on "
@@ -48,7 +61,7 @@ Faq::Faq(QWidget *parent) : QDialog(parent)
                          "To change the source data recovery, you need to modify the address in Help-> Configuration,"
                          " specify the<br /> URL and then validate.");
 
-    //Ajoute les textes dans le widget des onglets
+    /** Ajoute les textes dans le widget des onglets */
     Tab->addTab(frenchText, "Français");
     Tab->addTab(englishText, "English");
 

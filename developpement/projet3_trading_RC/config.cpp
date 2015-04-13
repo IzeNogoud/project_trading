@@ -7,17 +7,17 @@
 
 Config::Config(QWidget *parent = 0) : QDialog(parent)
 {
-    setWindowTitle("Configuration"); //Titre de la fenetre
+    setWindowTitle("Configuration"); /** Titre de la fenetre */
     setFixedSize(600,150);
 
-    closeButton = new QPushButton("Fermer"); //Bouton pour fermer la fenetre d'aide
+    closeButton = new QPushButton("Fermer"); /** Bouton pour fermer la fenetre d'aide */
     closeButton->setCursor(Qt::PointingHandCursor);
-    connect(closeButton, SIGNAL(clicked()) ,this, SLOT(accept())); //Slot de fermeture avec le bouton
+    connect(closeButton, SIGNAL(clicked()) ,this, SLOT(accept())); /** Slot de fermeture avec le bouton */
 
     validButton = new QPushButton("Valider");
     validButton->setCursor(Qt::PointingHandCursor);
 
-    QVBoxLayout *layout = new QVBoxLayout(); //Affichage du texte et du bouton
+    QVBoxLayout *layout = new QVBoxLayout(); /** Affichage du texte et du bouton */
 
     adresseLine = new QLineEdit;
     baseNameLine = new QLineEdit;

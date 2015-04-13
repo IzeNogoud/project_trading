@@ -1,0 +1,42 @@
+\section{connectiondb.\-h}
+
+\begin{DoxyCode}
+00001 \textcolor{preprocessor}{#ifndef CONNECTIONDB\_H}
+00002 \textcolor{preprocessor}{}\textcolor{preprocessor}{#define CONNECTIONDB\_H}
+00003 \textcolor{preprocessor}{}
+00004 \textcolor{preprocessor}{#include <QSqlDatabase>}
+00005 \textcolor{preprocessor}{#include <QSqlTableModel>}
+00006 \textcolor{preprocessor}{#include <QVBoxLayout>}
+00007 \textcolor{preprocessor}{#include <QWidget>}
+00008 \textcolor{preprocessor}{#include <QNetworkAccessManager>}
+00009 \textcolor{preprocessor}{#include <QWebPage>}
+00010 \textcolor{preprocessor}{#include <QWebView>}
+00011 \textcolor{preprocessor}{#include <QWebElement>}
+00012 
+00013 
+00014 \textcolor{keyword}{class }ConnectionDB : \textcolor{keyword}{public} QObject
+00015 \{
+00016 
+00017     Q\_OBJECT
+00018 
+00019 \textcolor{keyword}{public}:
+00020     ConnectionDB(QWidget *parent, QString debut, QString fin, QString devise);
+00021     ~ConnectionDB();
+00022 
+00023 
+00024 
+00025 \textcolor{keyword}{public} slots:
+00026 
+00027 
+00028 \textcolor{keyword}{private}:
+00029 
+00030     QSqlDatabase            db;
+00031     QSqlTableModel*         model;
+00032     QString*                devise;
+00033 
+00034 
+00035 
+00036 \};
+00037 
+00038 \textcolor{preprocessor}{#endif // CONNECTIONDB\_H}
+\end{DoxyCode}
