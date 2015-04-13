@@ -30,6 +30,7 @@ public slots:
 
 
 
+
 private:
 
     QSignalMapper*      signalMapper;

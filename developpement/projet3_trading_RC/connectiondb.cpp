@@ -25,7 +25,7 @@
 #include <QWebFrame>
 
 
-ConnectionDB::ConnectionDB(QWidget *parent, QString debut, QString fin, QString devise)
+ConnectionDB::ConnectionDB(QWidget *parent, QString debut, QString fin, QString devise) : m_parent(parent), m_debut(debut), m_fin(fin), m_devise(devise)
 {
     /** Connection database */
     db = QSqlDatabase::addDatabase("QSQLITE");
@@ -51,18 +51,20 @@ ConnectionDB::ConnectionDB(QWidget *parent, QString debut, QString fin, QString 
         /** Requete SQL */
         model = new QSqlTableModel( NULL, db ) ;
         model->setTable("deviseTable");
-        model->setFilter("Nom like'%" + devise + "' AND Date >='" + debut + "'" + " AND date <='" + fin + "'" );
-        qDebug() << "Nom like'%" + devise + "' AND Date >='" + debut + "'" + " AND date <='" + fin + "'" ;
+        model->setFilter("Nom like'%" + m_devise + "' AND Date >='" + m_debut + "'" + " AND date <='" + m_fin + "'" );
+        qDebug() << "Nom like'%" + m_devise + "' AND Date >='" + m_debut + "'" + " AND date <='" + m_fin + "'" ;
         model->setSort(7,Qt::DescendingOrder);
         model->select();
 
         /** Initialise le tableau a afficher */
-        QTableView* view = new QTableView(parent) ;
-        view->setGeometry(20,100,835,200);
+        QTableView* view = new QTableView(m_parent) ;
+        view->setGeometry(20,100,839,200);
         view->setModel( model );
 
         /** Affiche le tableau avec les données récupérées de la base de données */
         view->show();
+
+
 
     }
 
@@ -72,6 +74,3 @@ ConnectionDB::~ConnectionDB()
 {
 
 }
-
-
-

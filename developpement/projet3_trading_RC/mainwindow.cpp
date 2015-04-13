@@ -39,12 +39,10 @@ MainWindow::MainWindow(QWidget *parent)
     toolBar = addToolBar("OutilsBarre");
 
 
-    eurUsdAct = toolBar->addAction( "Euro / Dollar");
-    connect(eurUsdAct, SIGNAL(triggered()), this, SLOT(showEurUsd()));
-
 
     eurChfAct = toolBar->addAction( "Euro / Franc Suisse" );
     connect(eurChfAct, SIGNAL(triggered()), this, SLOT(showEurChf()));
+
 
 
     dateDebut = new QDateEdit(this);
@@ -56,6 +54,22 @@ MainWindow::MainWindow(QWidget *parent)
     dateFin->move(460,60);
     dateFinString = dateFin->date().toString("dd.MM.yyyy");
     connect(dateFin, SIGNAL(dateChanged(QDate)), this, SLOT(showEurChf()));
+
+
+    eurUsdAct = toolBar->addAction( "Euro / Dollar");
+    connect(eurUsdAct, SIGNAL(triggered()), this, SLOT(showEurUsd()));
+
+    dateDebut = new QDateEdit(this);
+    dateDebut->move(350,60);
+    dateDebutString = dateDebut->date().toString("dd.MM.yyyy");
+    connect(dateDebut, SIGNAL(dateChanged(QDate)), this, SLOT(showEurUsd()));
+
+    dateFin = new QDateEdit(QDate::currentDate(),this);
+    dateFin->move(460,60);
+    dateFinString = dateFin->date().toString("dd.MM.yyyy");
+    connect(dateFin, SIGNAL(dateChanged(QDate)), this, SLOT(showEurUsd()));
+
+
 
     loadWebView();
 
@@ -136,19 +150,7 @@ void MainWindow::elementSearch()
     }
 }
 
-/** Appel la page A propos de */
-void MainWindow::About()
-{
-    Help* about = new Help(this);
-    about->exec();
-}
 
-/** Appel la page FAQ */
-void MainWindow::Aide()
-{
-    Faq* faq = new Faq(this);
-    faq->exec();
-}
 
 /** Affiche le tableau de devise euro / dollar */
 void MainWindow::showEurUsd()
@@ -167,6 +169,24 @@ void MainWindow::showEurChf()
 
 }
 
+
+
+
+
+
+/** Appel la page A propos de */
+void MainWindow::About()
+{
+    Help* about = new Help(this);
+    about->exec();
+}
+
+/** Appel la page FAQ */
+void MainWindow::Aide()
+{
+    Faq* faq = new Faq(this);
+    faq->exec();
+}
 
 
 /** Appel la page configuration */
