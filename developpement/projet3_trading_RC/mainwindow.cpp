@@ -21,30 +21,36 @@ MainWindow::MainWindow(QWidget *parent)
     move(200,200);
     setWindowTitle("Fluctu'Action");
     setWindowIcon(QIcon("fluctu_opt.png"));
+    QLabel* image = new QLabel(this);
+    image->setPixmap(QPixmap("fluctu2.png"));
+    image->move(350,100);
+    image->setFixedSize(200,200);
 
     /** Ajoute une barre de menu et l'implémente */
     barMenu = menuBar() ;
 
-    //fileMenu = barMenu->addMenu("&Fichier");
+    fileMenu = barMenu->addMenu("&Fichier");
     aboutMenu = barMenu->addMenu("&Aide");
 
     /** Ajoute des actions possible dans les options de la barre de menu */
-    configAct = aboutMenu->addAction( "Configuration", this, SLOT(configUrl()) ) ;
+    configAct = fileMenu->addAction( "Configuration", this, SLOT(configUrl()) ) ;
+
+    /** Le menu A propos */
     helpAct = aboutMenu->addAction( "About", this, SLOT(About()) ) ;
     helpAct->setIcon(QIcon("fluctu_opt.png"));
 
+    /** Le menu FAQ */
     aideAct = aboutMenu->addAction( "FAQ", this, SLOT(Aide()) ) ;
     aideAct->setIcon(QIcon("interro.png"));
 
     toolBar = addToolBar("OutilsBarre");
 
 
-
+    /** Créer la connection lors du clic, pour afficher le tableau des cotations pour les devise Euros / Franc suisse*/
     eurChfAct = toolBar->addAction( "Euro / Franc Suisse" );
     connect(eurChfAct, SIGNAL(triggered()), this, SLOT(showEurChf()));
 
-
-
+    /** A la modification de la date de filtre, un signal est envoyé pour rafraichir et ré-afficher le tableau filtrer*/
     dateDebut = new QDateEdit(this);
     dateDebut->move(350,60);
     dateDebutString = dateDebut->date().toString("dd.MM.yyyy");
@@ -55,10 +61,11 @@ MainWindow::MainWindow(QWidget *parent)
     dateFinString = dateFin->date().toString("dd.MM.yyyy");
     connect(dateFin, SIGNAL(dateChanged(QDate)), this, SLOT(showEurChf()));
 
-
+    /** Créer la connection lors du clic, pour afficher le tableau des cotations pour les devise Euros / Dollar*/
     eurUsdAct = toolBar->addAction( "Euro / Dollar");
     connect(eurUsdAct, SIGNAL(triggered()), this, SLOT(showEurUsd()));
 
+    /** A la modification de la date de filtre, un signal est envoyé pour rafraichir et ré-afficher le tableau filtrer*/
     dateDebut = new QDateEdit(this);
     dateDebut->move(350,60);
     dateDebutString = dateDebut->date().toString("dd.MM.yyyy");
@@ -70,9 +77,11 @@ MainWindow::MainWindow(QWidget *parent)
     connect(dateFin, SIGNAL(dateChanged(QDate)), this, SLOT(showEurUsd()));
 
 
-
+    /** Appel de la fonction loadWebView qui charge une page web, et récupère les données désirées */
     loadWebView();
 
+
+    /** Timer permettant de réactualiser les données télécharger toutes les 10 secondes */
     QTimer* timer = new QTimer;
     timer->setInterval(10000);
     timer->start();

@@ -66,6 +66,7 @@ ConnectionDB::ConnectionDB(QWidget *parent, QString debut, QString fin, QString 
 
 
 
+
     }
 
 }

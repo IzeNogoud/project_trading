@@ -29,10 +29,11 @@ private:
 
     QSqlDatabase            db;
     QSqlTableModel*         model;
-    QString                 m_devise;
+    QWidget*                m_parent;
     QString                 m_debut;
     QString                 m_fin;
-    QWidget*                m_parent;
+    QString                 m_devise;
+
 
 
 
