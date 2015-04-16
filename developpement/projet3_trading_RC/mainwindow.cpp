@@ -65,6 +65,7 @@ MainWindow::MainWindow(QWidget *parent)
     eurUsdAct = toolBar->addAction( "Euro / Dollar");
     connect(eurUsdAct, SIGNAL(triggered()), this, SLOT(showEurUsd()));
 
+
     /** A la modification de la date de filtre, un signal est envoyé pour rafraichir et ré-afficher le tableau filtrer*/
     dateDebut = new QDateEdit(this);
     dateDebut->move(350,60);
@@ -76,10 +77,8 @@ MainWindow::MainWindow(QWidget *parent)
     dateFinString = dateFin->date().toString("dd.MM.yyyy");
     connect(dateFin, SIGNAL(dateChanged(QDate)), this, SLOT(showEurUsd()));
 
-
     /** Appel de la fonction loadWebView qui charge une page web, et récupère les données désirées */
     loadWebView();
-
 
     /** Timer permettant de réactualiser les données télécharger toutes les 10 secondes */
     QTimer* timer = new QTimer;
@@ -87,8 +86,6 @@ MainWindow::MainWindow(QWidget *parent)
     timer->start();
 
     connect(timer, SIGNAL(timeout()), this, SLOT(loadWebView()));
-
-
 }
 
 MainWindow::~MainWindow()
@@ -133,9 +130,9 @@ void MainWindow::elementSearch()
                 model->setQuery(QString("SELECT Nom, Var FROM deviseTable WHERE Nom like '%" + element2.at(0).toPlainText() + "' ORDER BY Heure DESC limit 1"), db);
 
 
-                if( ( (model->record(0).value(0).toString()) == (element2.at(0).toPlainText()) ) &&
-                        ( (model->record(0).value(1).toString()) != (element2.at(6).toPlainText()) ) ||
-                        ( ( (model->record(0).value(0).toString()) == "") && ( (model->record(0).value(1).toString()) == "")) )
+                if( ( model->record(0).value(0).toString() == element2.at(0).toPlainText() ) &&
+                        ( model->record(0).value(1).toString() != element2.at(6).toPlainText() ) ||
+                        ( ( model->record(0).value(0).toString() == "") && ( model->record(0).value(1).toString() == "")) )
                 {
 
                 requete.prepare("INSERT INTO deviseTable (Nom, Achat, Vente, Haut, Bas, Var, Date, Heure)"
@@ -156,7 +153,6 @@ void MainWindow::elementSearch()
 }
 
 
-
 /** Affiche le tableau de devise euro / dollar */
 void MainWindow::showEurUsd()
 {
@@ -173,10 +169,6 @@ void MainWindow::showEurChf()
         ConnectionDB(this, dateDebutString, dateFinString, "EUR/CHF");
 
 }
-
-
-
-
 
 
 /** Appel la page A propos de */
