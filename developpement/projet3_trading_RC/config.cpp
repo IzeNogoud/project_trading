@@ -44,8 +44,8 @@ Config::Config(QWidget *parent = 0) : QDialog(parent)
 
     eurUsdDl = new QCheckBox("Euro / Dollar");
     eurChfDl = new QCheckBox("Euro / Franc suisse");
-    eurChfDl->setChecked(true);
-    eurUsdDl->setChecked(true);
+    eurUsdDl->setChecked(settings.value("cBoxEDdl").toBool());
+    eurChfDl->setChecked(settings.value("cBoxEFSdl").toBool());
 
     QVBoxLayout* vBoxDl = new QVBoxLayout;
     vBoxDl->addWidget(eurUsdDl);
@@ -101,6 +101,9 @@ void Config::sauvegarder()
 
     settings.setValue("Adresse", adresseLine->text());
     settings.setValue("NomBase", baseNameLine->text());
+
+    settings.setValue("cBoxEDdl", eurUsdDl->isChecked());
+    settings.setValue("cBoxEFSdl", eurChfDl->isChecked());
 
     settings.setValue("cBoxED", eurUsdShow->isChecked());
     settings.setValue("cBoxEFS", eurChfShow->isChecked());

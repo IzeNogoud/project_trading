@@ -19,6 +19,7 @@
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
 {
+
     QSettings::Format XmlFormat = QSettings::registerFormat("xml", readXmlFile, writeXmlFile);
     QSettings::setPath(XmlFormat, QSettings::UserScope, QDir::currentPath());
     QSettings settings(XmlFormat, QSettings::UserScope, ".config", "Project_Trading");
@@ -108,9 +109,13 @@ void MainWindow::loadWebView()
     QSettings::setPath(XmlFormat, QSettings::UserScope, QDir::currentPath());
     QSettings settings(XmlFormat, QSettings::UserScope, ".config", "Project_Trading");
 
+    QString idCotation;
+    if(settings.value("filesConfig/cBoxEDdl").toBool() == true) idCotation += "1;";
+    if(settings.value("filesConfig/cBoxEFSdl").toBool() == true) idCotation += "10";
+
 
     webView = new QWebView;
-    webView->load(QUrl(settings.value("filesConfig/Adresse").toString()));
+    webView->load(QUrl(settings.value("filesConfig/Adresse").toString() + idCotation));
     connect(webView, SIGNAL(loadFinished(bool)), this, SLOT(elementSearch())); /** Appel un slot à la fin du chargement */
     webView->hide(); /** cache le widget généré */
 
@@ -126,7 +131,8 @@ void MainWindow::elementSearch()
 
     /** connection a la base pour l'insertion */
     db = QSqlDatabase::addDatabase("QSQLITE");
-    db.setDatabaseName(settings.value("NomBase").toString());
+    db.setDatabaseName(settings.value("filesConfig/NomBase").toString());
+
 
     /** récupère le corp de la page pour pouvoir le manipuler */
     docElement = webView->page()->mainFrame()->documentElement();
@@ -147,6 +153,10 @@ void MainWindow::elementSearch()
                 QSqlQueryModel* model = new QSqlQueryModel;
                 model->setQuery(QString("SELECT Nom, Var FROM deviseTable WHERE Nom like '%" + element2.at(0).toPlainText() + "' ORDER BY Heure DESC limit 1"), db);
 
+                qDebug() << model->record(0).value(0).toString();
+                qDebug() << element2.at(0).toPlainText();
+                qDebug() << model->record(0).value(1).toString();
+                qDebug() << element2.at(6).toPlainText();
 
                 if( ( model->record(0).value(0).toString() == element2.at(0).toPlainText() ) &&
                         ( model->record(0).value(1).toString() != element2.at(6).toPlainText() ) ||
