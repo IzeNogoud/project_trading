@@ -33,7 +33,7 @@ MOVE          = mv -f
 TAR           = tar -cf
 COMPRESS      = gzip -9f
 DISTNAME      = projet3_trading_RC1.0.0
-DISTDIR = /home/robin/Documents/TSDI/project_trading/developpement/projet3_trading_RC/.tmp/projet3_trading_RC1.0.0
+DISTDIR = /home/robin/Documents/TSDI/projectTrading/developpement/projet3_trading_RC/.tmp/projet3_trading_RC1.0.0
 LINK          = g++
 LFLAGS        = -Wl,-rpath,/home/robin/Qt/5.4/gcc_64 -Wl,-rpath,/home/robin/Qt/5.4/gcc_64/lib -Wl,-rpath-link,/home/robin/Qt/5.4/gcc_64/lib
 LIBS          = $(SUBLIBS) -L/home/robin/Qt/5.4/gcc_64/lib -lQt5WebKitWidgets -lQt5Widgets -lQt5WebKit -lQt5Gui -lQt5Sql -lQt5Network -lQt5Core -lGL -lpthread 
@@ -186,7 +186,8 @@ DIST          = /home/robin/Qt/5.4/gcc_64/mkspecs/features/spec_pre.prf \
 		../projet3_trading_RC/connectiondb.h \
 		../projet3_trading_RC/help.h \
 		../projet3_trading_RC/faq.h \
-		../projet3_trading_RC/config.h ../projet3_trading_RC/main.cpp \
+		../projet3_trading_RC/config.h \
+		../projet3_trading_RC/xml.h ../projet3_trading_RC/main.cpp \
 		../projet3_trading_RC/mainwindow.cpp \
 		../projet3_trading_RC/connectiondb.cpp \
 		../projet3_trading_RC/help.cpp \
@@ -491,7 +492,7 @@ dist: distdir FORCE
 distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
-	$(COPY_FILE) --parents ../projet3_trading_RC/mainwindow.h ../projet3_trading_RC/connectiondb.h ../projet3_trading_RC/help.h ../projet3_trading_RC/faq.h ../projet3_trading_RC/config.h $(DISTDIR)/
+	$(COPY_FILE) --parents ../projet3_trading_RC/mainwindow.h ../projet3_trading_RC/connectiondb.h ../projet3_trading_RC/help.h ../projet3_trading_RC/faq.h ../projet3_trading_RC/config.h ../projet3_trading_RC/xml.h $(DISTDIR)/
 	$(COPY_FILE) --parents ../projet3_trading_RC/main.cpp ../projet3_trading_RC/mainwindow.cpp ../projet3_trading_RC/connectiondb.cpp ../projet3_trading_RC/help.cpp ../projet3_trading_RC/faq.cpp ../projet3_trading_RC/config.cpp $(DISTDIR)/
 
 
@@ -991,7 +992,7 @@ moc_mainwindow.cpp: /home/robin/Qt/5.4/gcc_64/include/QtWidgets/QMainWindow \
 		/home/robin/Qt/5.4/gcc_64/include/QtNetwork/qssl.h \
 		/home/robin/Qt/5.4/gcc_64/include/QtCore/QFlags \
 		../projet3_trading_RC/mainwindow.h
-	/home/robin/Qt/5.4/gcc_64/bin/moc $(DEFINES) -I/home/robin/Qt/5.4/gcc_64/mkspecs/linux-g++ -I/home/robin/Documents/TSDI/project_trading/developpement/projet3_trading_RC -I/home/robin/Qt/5.4/gcc_64/include -I/home/robin/Qt/5.4/gcc_64/include/QtWebKitWidgets -I/home/robin/Qt/5.4/gcc_64/include/QtWidgets -I/home/robin/Qt/5.4/gcc_64/include/QtWebKit -I/home/robin/Qt/5.4/gcc_64/include/QtGui -I/home/robin/Qt/5.4/gcc_64/include/QtSql -I/home/robin/Qt/5.4/gcc_64/include/QtNetwork -I/home/robin/Qt/5.4/gcc_64/include/QtCore -I. ../projet3_trading_RC/mainwindow.h -o moc_mainwindow.cpp
+	/home/robin/Qt/5.4/gcc_64/bin/moc $(DEFINES) -I/home/robin/Qt/5.4/gcc_64/mkspecs/linux-g++ -I/home/robin/Documents/TSDI/projectTrading/developpement/projet3_trading_RC -I/home/robin/Qt/5.4/gcc_64/include -I/home/robin/Qt/5.4/gcc_64/include/QtWebKitWidgets -I/home/robin/Qt/5.4/gcc_64/include/QtWidgets -I/home/robin/Qt/5.4/gcc_64/include/QtWebKit -I/home/robin/Qt/5.4/gcc_64/include/QtGui -I/home/robin/Qt/5.4/gcc_64/include/QtSql -I/home/robin/Qt/5.4/gcc_64/include/QtNetwork -I/home/robin/Qt/5.4/gcc_64/include/QtCore -I. ../projet3_trading_RC/mainwindow.h -o moc_mainwindow.cpp
 
 moc_connectiondb.cpp: /home/robin/Qt/5.4/gcc_64/include/QtSql/QSqlDatabase \
 		/home/robin/Qt/5.4/gcc_64/include/QtSql/qsqldatabase.h \
@@ -1134,7 +1135,7 @@ moc_connectiondb.cpp: /home/robin/Qt/5.4/gcc_64/include/QtSql/QSqlDatabase \
 		/home/robin/Qt/5.4/gcc_64/include/QtWebKit/QWebElement \
 		/home/robin/Qt/5.4/gcc_64/include/QtWebKit/qwebelement.h \
 		../projet3_trading_RC/connectiondb.h
-	/home/robin/Qt/5.4/gcc_64/bin/moc $(DEFINES) -I/home/robin/Qt/5.4/gcc_64/mkspecs/linux-g++ -I/home/robin/Documents/TSDI/project_trading/developpement/projet3_trading_RC -I/home/robin/Qt/5.4/gcc_64/include -I/home/robin/Qt/5.4/gcc_64/include/QtWebKitWidgets -I/home/robin/Qt/5.4/gcc_64/include/QtWidgets -I/home/robin/Qt/5.4/gcc_64/include/QtWebKit -I/home/robin/Qt/5.4/gcc_64/include/QtGui -I/home/robin/Qt/5.4/gcc_64/include/QtSql -I/home/robin/Qt/5.4/gcc_64/include/QtNetwork -I/home/robin/Qt/5.4/gcc_64/include/QtCore -I. ../projet3_trading_RC/connectiondb.h -o moc_connectiondb.cpp
+	/home/robin/Qt/5.4/gcc_64/bin/moc $(DEFINES) -I/home/robin/Qt/5.4/gcc_64/mkspecs/linux-g++ -I/home/robin/Documents/TSDI/projectTrading/developpement/projet3_trading_RC -I/home/robin/Qt/5.4/gcc_64/include -I/home/robin/Qt/5.4/gcc_64/include/QtWebKitWidgets -I/home/robin/Qt/5.4/gcc_64/include/QtWidgets -I/home/robin/Qt/5.4/gcc_64/include/QtWebKit -I/home/robin/Qt/5.4/gcc_64/include/QtGui -I/home/robin/Qt/5.4/gcc_64/include/QtSql -I/home/robin/Qt/5.4/gcc_64/include/QtNetwork -I/home/robin/Qt/5.4/gcc_64/include/QtCore -I. ../projet3_trading_RC/connectiondb.h -o moc_connectiondb.cpp
 
 compiler_moc_source_make_all:
 compiler_moc_source_clean:
@@ -2122,7 +2123,9 @@ mainwindow.o: ../projet3_trading_RC/mainwindow.cpp ../projet3_trading_RC/mainwin
 		/home/robin/Qt/5.4/gcc_64/include/QtWebKitWidgets/QWebFrame \
 		/home/robin/Qt/5.4/gcc_64/include/QtWebKitWidgets/qwebframe.h \
 		/home/robin/Qt/5.4/gcc_64/include/QtSql/QSqlQuery \
-		/home/robin/Qt/5.4/gcc_64/include/QtSql/qsqlquery.h
+		/home/robin/Qt/5.4/gcc_64/include/QtSql/qsqlquery.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtSql/QSqlRecord \
+		/home/robin/Qt/5.4/gcc_64/include/QtSql/qsqlrecord.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mainwindow.o ../projet3_trading_RC/mainwindow.cpp
 
 connectiondb.o: ../projet3_trading_RC/connectiondb.cpp ../projet3_trading_RC/connectiondb.h \
@@ -2731,6 +2734,8 @@ help.o: ../projet3_trading_RC/help.cpp ../projet3_trading_RC/help.h \
 		/home/robin/Qt/5.4/gcc_64/include/QtWidgets/QLabel \
 		/home/robin/Qt/5.4/gcc_64/include/QtWidgets/qlabel.h \
 		/home/robin/Qt/5.4/gcc_64/include/QtWidgets/qframe.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtWidgets/QTabWidget \
+		/home/robin/Qt/5.4/gcc_64/include/QtWidgets/qtabwidget.h \
 		/home/robin/Qt/5.4/gcc_64/include/QtWidgets/QVBoxLayout \
 		/home/robin/Qt/5.4/gcc_64/include/QtWidgets/qboxlayout.h \
 		/home/robin/Qt/5.4/gcc_64/include/QtWidgets/qlayout.h \

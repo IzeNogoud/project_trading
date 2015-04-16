@@ -51,9 +51,7 @@ ConnectionDB::ConnectionDB(QWidget *parent, QString debut, QString fin, QString 
         /** Requete SQL */
         model = new QSqlTableModel( NULL, db ) ;
         model->setTable("deviseTable");
-        model->setFilter("Nom like'%" + m_devise + "' AND Date >='" + m_debut + "'" + " AND date <='" + m_fin + "'" );
-        qDebug() << "Nom like'%" + m_devise + "' AND Date >='" + m_debut + "'" + " AND date <='" + m_fin + "'" ;
-        model->setSort(7,Qt::DescendingOrder);
+        model->setFilter("Nom like'%" + m_devise + "' AND Date >='" + m_debut + "'" + " AND date <='" + m_fin + "' ORDER BY Date DESC, Heure DESC" );
         model->select();
 
         /** Initialise le tableau a afficher */
@@ -63,9 +61,6 @@ ConnectionDB::ConnectionDB(QWidget *parent, QString debut, QString fin, QString 
 
         /** Affiche le tableau avec les données récupérées de la base de données */
         view->show();
-
-
-
 
     }
 

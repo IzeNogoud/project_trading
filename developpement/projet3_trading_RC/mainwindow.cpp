@@ -131,10 +131,6 @@ void MainWindow::elementSearch()
             {
                 QSqlQueryModel* model = new QSqlQueryModel;
                 model->setQuery(QString("SELECT Nom, Var FROM deviseTable WHERE Nom like '%" + element2.at(0).toPlainText() + "' ORDER BY Heure DESC limit 1"), db);
-                qDebug() << model->record(0).value(0).toString();
-                qDebug() << element2.at(0).toPlainText();
-                qDebug() << model->record(0).value(1).toString();
-                qDebug() << element2.at(6).toPlainText();
 
 
                 if( ( (model->record(0).value(0).toString()) == (element2.at(0).toPlainText()) ) &&
