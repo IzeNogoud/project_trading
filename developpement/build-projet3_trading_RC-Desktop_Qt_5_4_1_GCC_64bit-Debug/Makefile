@@ -54,7 +54,8 @@ SOURCES       = ../projet3_trading_RC/main.cpp \
 		../projet3_trading_RC/help.cpp \
 		../projet3_trading_RC/faq.cpp \
 		../projet3_trading_RC/config.cpp moc_mainwindow.cpp \
-		moc_connectiondb.cpp
+		moc_connectiondb.cpp \
+		moc_config.cpp
 OBJECTS       = main.o \
 		mainwindow.o \
 		connectiondb.o \
@@ -62,7 +63,8 @@ OBJECTS       = main.o \
 		faq.o \
 		config.o \
 		moc_mainwindow.o \
-		moc_connectiondb.o
+		moc_connectiondb.o \
+		moc_config.o
 DIST          = /home/robin/Qt/5.4/gcc_64/mkspecs/features/spec_pre.prf \
 		/home/robin/Qt/5.4/gcc_64/mkspecs/common/shell-unix.conf \
 		/home/robin/Qt/5.4/gcc_64/mkspecs/common/unix.conf \
@@ -186,8 +188,7 @@ DIST          = /home/robin/Qt/5.4/gcc_64/mkspecs/features/spec_pre.prf \
 		../projet3_trading_RC/connectiondb.h \
 		../projet3_trading_RC/help.h \
 		../projet3_trading_RC/faq.h \
-		../projet3_trading_RC/config.h \
-		../projet3_trading_RC/xml.h ../projet3_trading_RC/main.cpp \
+		../projet3_trading_RC/config.h ../projet3_trading_RC/main.cpp \
 		../projet3_trading_RC/mainwindow.cpp \
 		../projet3_trading_RC/connectiondb.cpp \
 		../projet3_trading_RC/help.cpp \
@@ -492,7 +493,7 @@ dist: distdir FORCE
 distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
-	$(COPY_FILE) --parents ../projet3_trading_RC/mainwindow.h ../projet3_trading_RC/connectiondb.h ../projet3_trading_RC/help.h ../projet3_trading_RC/faq.h ../projet3_trading_RC/config.h ../projet3_trading_RC/xml.h $(DISTDIR)/
+	$(COPY_FILE) --parents ../projet3_trading_RC/mainwindow.h ../projet3_trading_RC/connectiondb.h ../projet3_trading_RC/help.h ../projet3_trading_RC/faq.h ../projet3_trading_RC/config.h $(DISTDIR)/
 	$(COPY_FILE) --parents ../projet3_trading_RC/main.cpp ../projet3_trading_RC/mainwindow.cpp ../projet3_trading_RC/connectiondb.cpp ../projet3_trading_RC/help.cpp ../projet3_trading_RC/faq.cpp ../projet3_trading_RC/config.cpp $(DISTDIR)/
 
 
@@ -516,9 +517,9 @@ check: first
 
 compiler_rcc_make_all:
 compiler_rcc_clean:
-compiler_moc_header_make_all: moc_mainwindow.cpp moc_connectiondb.cpp
+compiler_moc_header_make_all: moc_mainwindow.cpp moc_connectiondb.cpp moc_config.cpp
 compiler_moc_header_clean:
-	-$(DEL_FILE) moc_mainwindow.cpp moc_connectiondb.cpp
+	-$(DEL_FILE) moc_mainwindow.cpp moc_connectiondb.cpp moc_config.cpp
 moc_mainwindow.cpp: /home/robin/Qt/5.4/gcc_64/include/QtWidgets/QMainWindow \
 		/home/robin/Qt/5.4/gcc_64/include/QtWidgets/qmainwindow.h \
 		/home/robin/Qt/5.4/gcc_64/include/QtWidgets/qwidget.h \
@@ -1137,6 +1138,127 @@ moc_connectiondb.cpp: /home/robin/Qt/5.4/gcc_64/include/QtSql/QSqlDatabase \
 		../projet3_trading_RC/connectiondb.h
 	/home/robin/Qt/5.4/gcc_64/bin/moc $(DEFINES) -I/home/robin/Qt/5.4/gcc_64/mkspecs/linux-g++ -I/home/robin/Documents/TSDI/projectTrading/developpement/projet3_trading_RC -I/home/robin/Qt/5.4/gcc_64/include -I/home/robin/Qt/5.4/gcc_64/include/QtWebKitWidgets -I/home/robin/Qt/5.4/gcc_64/include/QtWidgets -I/home/robin/Qt/5.4/gcc_64/include/QtWebKit -I/home/robin/Qt/5.4/gcc_64/include/QtGui -I/home/robin/Qt/5.4/gcc_64/include/QtSql -I/home/robin/Qt/5.4/gcc_64/include/QtNetwork -I/home/robin/Qt/5.4/gcc_64/include/QtCore -I. ../projet3_trading_RC/connectiondb.h -o moc_connectiondb.cpp
 
+moc_config.cpp: /home/robin/Qt/5.4/gcc_64/include/QtWidgets/QCheckBox \
+		/home/robin/Qt/5.4/gcc_64/include/QtWidgets/qcheckbox.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtWidgets/qabstractbutton.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtGui/qicon.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtCore/qglobal.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtCore/qconfig.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtCore/qfeatures.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtCore/qsystemdetection.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtCore/qprocessordetection.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtCore/qcompilerdetection.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtCore/qtypeinfo.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtCore/qtypetraits.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtCore/qsysinfo.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtCore/qlogging.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtCore/qflags.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtCore/qatomic.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtCore/qbasicatomic.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtCore/qatomic_bootstrap.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtCore/qgenericatomic.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtCore/qatomic_msvc.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtCore/qatomic_armv7.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtCore/qatomic_armv6.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtCore/qatomic_armv5.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtCore/qatomic_ia64.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtCore/qatomic_mips.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtCore/qatomic_x86.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtCore/qatomic_cxx11.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtCore/qatomic_gcc.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtCore/qatomic_unix.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtCore/qglobalstatic.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtCore/qmutex.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtCore/qnumeric.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtCore/qsize.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtCore/qnamespace.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtCore/qlist.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtCore/qalgorithms.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtCore/qiterator.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtCore/qrefcount.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtCore/qarraydata.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtCore/qbytearraylist.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtCore/qbytearray.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtCore/qstring.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtCore/qchar.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtCore/qstringbuilder.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtGui/qpixmap.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtGui/qpaintdevice.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtGui/qwindowdefs.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtCore/qobjectdefs.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtCore/qobjectdefs_impl.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtGui/qwindowdefs_win.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtCore/qrect.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtCore/qmargins.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtCore/qpoint.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtGui/qcolor.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtGui/qrgb.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtCore/qstringlist.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtCore/qdatastream.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtCore/qscopedpointer.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtCore/qiodevice.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtCore/qobject.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtCore/qcoreevent.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtCore/qmetatype.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtCore/qvarlengtharray.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtCore/qcontainerfwd.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtCore/qisenum.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtCore/qobject_impl.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtCore/qpair.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtCore/qregexp.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtCore/qstringmatcher.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtCore/qsharedpointer.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtCore/qshareddata.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtCore/qhash.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtCore/qsharedpointer_impl.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtGui/qimage.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtGui/qtransform.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtGui/qmatrix.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtGui/qpolygon.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtCore/qvector.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtGui/qregion.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtCore/qline.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtGui/qpainterpath.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtGui/qpixelformat.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtGui/qkeysequence.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtWidgets/qwidget.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtGui/qpalette.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtGui/qbrush.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtGui/qfont.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtGui/qfontmetrics.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtGui/qfontinfo.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtWidgets/qsizepolicy.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtGui/qcursor.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtGui/qevent.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtCore/qvariant.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtCore/qmap.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtCore/qdebug.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtCore/qtextstream.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtCore/qlocale.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtCore/qset.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtCore/qcontiguouscache.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtCore/qurl.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtCore/qurlquery.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtCore/qfile.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtCore/qfiledevice.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtGui/qvector2d.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtGui/qtouchdevice.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtWidgets/QDialog \
+		/home/robin/Qt/5.4/gcc_64/include/QtWidgets/qdialog.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtWidgets/QLineEdit \
+		/home/robin/Qt/5.4/gcc_64/include/QtWidgets/qlineedit.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtWidgets/qframe.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtGui/qtextcursor.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtGui/qtextformat.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtGui/qpen.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtGui/qtextoption.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtWidgets/QPushButton \
+		/home/robin/Qt/5.4/gcc_64/include/QtWidgets/qpushbutton.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtCore/QSettings \
+		/home/robin/Qt/5.4/gcc_64/include/QtCore/qsettings.h \
+		../projet3_trading_RC/config.h
+	/home/robin/Qt/5.4/gcc_64/bin/moc $(DEFINES) -I/home/robin/Qt/5.4/gcc_64/mkspecs/linux-g++ -I/home/robin/Documents/TSDI/projectTrading/developpement/projet3_trading_RC -I/home/robin/Qt/5.4/gcc_64/include -I/home/robin/Qt/5.4/gcc_64/include/QtWebKitWidgets -I/home/robin/Qt/5.4/gcc_64/include/QtWidgets -I/home/robin/Qt/5.4/gcc_64/include/QtWebKit -I/home/robin/Qt/5.4/gcc_64/include/QtGui -I/home/robin/Qt/5.4/gcc_64/include/QtSql -I/home/robin/Qt/5.4/gcc_64/include/QtNetwork -I/home/robin/Qt/5.4/gcc_64/include/QtCore -I. ../projet3_trading_RC/config.h -o moc_config.cpp
+
 compiler_moc_source_make_all:
 compiler_moc_source_clean:
 compiler_uic_make_all:
@@ -1624,15 +1746,10 @@ main.o: ../projet3_trading_RC/main.cpp ../projet3_trading_RC/mainwindow.h \
 		/home/robin/Qt/5.4/gcc_64/include/QtNetwork/qsslcertificate.h \
 		/home/robin/Qt/5.4/gcc_64/include/QtNetwork/qssl.h \
 		/home/robin/Qt/5.4/gcc_64/include/QtCore/QFlags \
-		../projet3_trading_RC/connectiondb.h \
-		/home/robin/Qt/5.4/gcc_64/include/QtSql/QSqlTableModel \
-		/home/robin/Qt/5.4/gcc_64/include/QtSql/qsqltablemodel.h \
-		/home/robin/Qt/5.4/gcc_64/include/QtSql/qsqlquerymodel.h \
-		/home/robin/Qt/5.4/gcc_64/include/QtWidgets/QVBoxLayout \
-		/home/robin/Qt/5.4/gcc_64/include/QtNetwork/QNetworkAccessManager \
-		/home/robin/Qt/5.4/gcc_64/include/QtWebKitWidgets/QWebPage \
 		/home/robin/Qt/5.4/gcc_64/include/QtWidgets/QApplication \
-		/home/robin/Qt/5.4/gcc_64/include/QtWidgets/QMessageBox
+		/home/robin/Qt/5.4/gcc_64/include/QtCore/QTranslator \
+		/home/robin/Qt/5.4/gcc_64/include/QtCore/QLocale \
+		/home/robin/Qt/5.4/gcc_64/include/QtCore/QLibraryInfo
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o ../projet3_trading_RC/main.cpp
 
 mainwindow.o: ../projet3_trading_RC/mainwindow.cpp ../projet3_trading_RC/mainwindow.h \
@@ -2119,13 +2236,18 @@ mainwindow.o: ../projet3_trading_RC/mainwindow.cpp ../projet3_trading_RC/mainwin
 		/home/robin/Qt/5.4/gcc_64/include/QtWidgets/QDialog \
 		../projet3_trading_RC/faq.h \
 		../projet3_trading_RC/config.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtWidgets/QCheckBox \
 		/home/robin/Qt/5.4/gcc_64/include/QtWidgets/QLineEdit \
+		/home/robin/Qt/5.4/gcc_64/include/QtCore/QSettings \
 		/home/robin/Qt/5.4/gcc_64/include/QtWebKitWidgets/QWebFrame \
 		/home/robin/Qt/5.4/gcc_64/include/QtWebKitWidgets/qwebframe.h \
 		/home/robin/Qt/5.4/gcc_64/include/QtSql/QSqlQuery \
 		/home/robin/Qt/5.4/gcc_64/include/QtSql/qsqlquery.h \
 		/home/robin/Qt/5.4/gcc_64/include/QtSql/QSqlRecord \
-		/home/robin/Qt/5.4/gcc_64/include/QtSql/qsqlrecord.h
+		/home/robin/Qt/5.4/gcc_64/include/QtSql/qsqlrecord.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtCore/QIODevice \
+		/home/robin/Qt/5.4/gcc_64/include/QtCore/QXmlStreamReader \
+		/home/robin/Qt/5.4/gcc_64/include/QtCore/QString
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mainwindow.o ../projet3_trading_RC/mainwindow.cpp
 
 connectiondb.o: ../projet3_trading_RC/connectiondb.cpp ../projet3_trading_RC/connectiondb.h \
@@ -3201,10 +3323,10 @@ faq.o: ../projet3_trading_RC/faq.cpp ../projet3_trading_RC/faq.h \
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o faq.o ../projet3_trading_RC/faq.cpp
 
 config.o: ../projet3_trading_RC/config.cpp ../projet3_trading_RC/config.h \
-		/home/robin/Qt/5.4/gcc_64/include/QtWidgets/QDialog \
-		/home/robin/Qt/5.4/gcc_64/include/QtWidgets/qdialog.h \
-		/home/robin/Qt/5.4/gcc_64/include/QtWidgets/qwidget.h \
-		/home/robin/Qt/5.4/gcc_64/include/QtGui/qwindowdefs.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtWidgets/QCheckBox \
+		/home/robin/Qt/5.4/gcc_64/include/QtWidgets/qcheckbox.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtWidgets/qabstractbutton.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtGui/qicon.h \
 		/home/robin/Qt/5.4/gcc_64/include/QtCore/qglobal.h \
 		/home/robin/Qt/5.4/gcc_64/include/QtCore/qconfig.h \
 		/home/robin/Qt/5.4/gcc_64/include/QtCore/qfeatures.h \
@@ -3233,63 +3355,65 @@ config.o: ../projet3_trading_RC/config.cpp ../projet3_trading_RC/config.h \
 		/home/robin/Qt/5.4/gcc_64/include/QtCore/qglobalstatic.h \
 		/home/robin/Qt/5.4/gcc_64/include/QtCore/qmutex.h \
 		/home/robin/Qt/5.4/gcc_64/include/QtCore/qnumeric.h \
-		/home/robin/Qt/5.4/gcc_64/include/QtCore/qobjectdefs.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtCore/qsize.h \
 		/home/robin/Qt/5.4/gcc_64/include/QtCore/qnamespace.h \
-		/home/robin/Qt/5.4/gcc_64/include/QtCore/qobjectdefs_impl.h \
-		/home/robin/Qt/5.4/gcc_64/include/QtGui/qwindowdefs_win.h \
-		/home/robin/Qt/5.4/gcc_64/include/QtCore/qobject.h \
-		/home/robin/Qt/5.4/gcc_64/include/QtCore/qstring.h \
-		/home/robin/Qt/5.4/gcc_64/include/QtCore/qchar.h \
-		/home/robin/Qt/5.4/gcc_64/include/QtCore/qbytearray.h \
-		/home/robin/Qt/5.4/gcc_64/include/QtCore/qrefcount.h \
-		/home/robin/Qt/5.4/gcc_64/include/QtCore/qarraydata.h \
-		/home/robin/Qt/5.4/gcc_64/include/QtCore/qstringbuilder.h \
 		/home/robin/Qt/5.4/gcc_64/include/QtCore/qlist.h \
 		/home/robin/Qt/5.4/gcc_64/include/QtCore/qalgorithms.h \
 		/home/robin/Qt/5.4/gcc_64/include/QtCore/qiterator.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtCore/qrefcount.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtCore/qarraydata.h \
 		/home/robin/Qt/5.4/gcc_64/include/QtCore/qbytearraylist.h \
-		/home/robin/Qt/5.4/gcc_64/include/QtCore/qcoreevent.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtCore/qbytearray.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtCore/qstring.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtCore/qchar.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtCore/qstringbuilder.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtGui/qpixmap.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtGui/qpaintdevice.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtGui/qwindowdefs.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtCore/qobjectdefs.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtCore/qobjectdefs_impl.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtGui/qwindowdefs_win.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtCore/qrect.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtCore/qmargins.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtCore/qpoint.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtGui/qcolor.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtGui/qrgb.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtCore/qstringlist.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtCore/qdatastream.h \
 		/home/robin/Qt/5.4/gcc_64/include/QtCore/qscopedpointer.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtCore/qiodevice.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtCore/qobject.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtCore/qcoreevent.h \
 		/home/robin/Qt/5.4/gcc_64/include/QtCore/qmetatype.h \
 		/home/robin/Qt/5.4/gcc_64/include/QtCore/qvarlengtharray.h \
 		/home/robin/Qt/5.4/gcc_64/include/QtCore/qcontainerfwd.h \
 		/home/robin/Qt/5.4/gcc_64/include/QtCore/qisenum.h \
 		/home/robin/Qt/5.4/gcc_64/include/QtCore/qobject_impl.h \
-		/home/robin/Qt/5.4/gcc_64/include/QtCore/qmargins.h \
-		/home/robin/Qt/5.4/gcc_64/include/QtGui/qpaintdevice.h \
-		/home/robin/Qt/5.4/gcc_64/include/QtCore/qrect.h \
-		/home/robin/Qt/5.4/gcc_64/include/QtCore/qsize.h \
-		/home/robin/Qt/5.4/gcc_64/include/QtCore/qpoint.h \
-		/home/robin/Qt/5.4/gcc_64/include/QtGui/qpalette.h \
-		/home/robin/Qt/5.4/gcc_64/include/QtGui/qcolor.h \
-		/home/robin/Qt/5.4/gcc_64/include/QtGui/qrgb.h \
-		/home/robin/Qt/5.4/gcc_64/include/QtCore/qstringlist.h \
-		/home/robin/Qt/5.4/gcc_64/include/QtCore/qdatastream.h \
-		/home/robin/Qt/5.4/gcc_64/include/QtCore/qiodevice.h \
 		/home/robin/Qt/5.4/gcc_64/include/QtCore/qpair.h \
 		/home/robin/Qt/5.4/gcc_64/include/QtCore/qregexp.h \
 		/home/robin/Qt/5.4/gcc_64/include/QtCore/qstringmatcher.h \
-		/home/robin/Qt/5.4/gcc_64/include/QtGui/qbrush.h \
-		/home/robin/Qt/5.4/gcc_64/include/QtCore/qvector.h \
-		/home/robin/Qt/5.4/gcc_64/include/QtGui/qmatrix.h \
-		/home/robin/Qt/5.4/gcc_64/include/QtGui/qpolygon.h \
-		/home/robin/Qt/5.4/gcc_64/include/QtGui/qregion.h \
-		/home/robin/Qt/5.4/gcc_64/include/QtCore/qline.h \
-		/home/robin/Qt/5.4/gcc_64/include/QtGui/qtransform.h \
-		/home/robin/Qt/5.4/gcc_64/include/QtGui/qpainterpath.h \
-		/home/robin/Qt/5.4/gcc_64/include/QtGui/qimage.h \
-		/home/robin/Qt/5.4/gcc_64/include/QtGui/qpixelformat.h \
-		/home/robin/Qt/5.4/gcc_64/include/QtGui/qpixmap.h \
 		/home/robin/Qt/5.4/gcc_64/include/QtCore/qsharedpointer.h \
 		/home/robin/Qt/5.4/gcc_64/include/QtCore/qshareddata.h \
 		/home/robin/Qt/5.4/gcc_64/include/QtCore/qhash.h \
 		/home/robin/Qt/5.4/gcc_64/include/QtCore/qsharedpointer_impl.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtGui/qimage.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtGui/qtransform.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtGui/qmatrix.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtGui/qpolygon.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtCore/qvector.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtGui/qregion.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtCore/qline.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtGui/qpainterpath.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtGui/qpixelformat.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtGui/qkeysequence.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtWidgets/qwidget.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtGui/qpalette.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtGui/qbrush.h \
 		/home/robin/Qt/5.4/gcc_64/include/QtGui/qfont.h \
 		/home/robin/Qt/5.4/gcc_64/include/QtGui/qfontmetrics.h \
 		/home/robin/Qt/5.4/gcc_64/include/QtGui/qfontinfo.h \
 		/home/robin/Qt/5.4/gcc_64/include/QtWidgets/qsizepolicy.h \
 		/home/robin/Qt/5.4/gcc_64/include/QtGui/qcursor.h \
-		/home/robin/Qt/5.4/gcc_64/include/QtGui/qkeysequence.h \
 		/home/robin/Qt/5.4/gcc_64/include/QtGui/qevent.h \
 		/home/robin/Qt/5.4/gcc_64/include/QtCore/qvariant.h \
 		/home/robin/Qt/5.4/gcc_64/include/QtCore/qmap.h \
@@ -3304,6 +3428,8 @@ config.o: ../projet3_trading_RC/config.cpp ../projet3_trading_RC/config.h \
 		/home/robin/Qt/5.4/gcc_64/include/QtCore/qfiledevice.h \
 		/home/robin/Qt/5.4/gcc_64/include/QtGui/qvector2d.h \
 		/home/robin/Qt/5.4/gcc_64/include/QtGui/qtouchdevice.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtWidgets/QDialog \
+		/home/robin/Qt/5.4/gcc_64/include/QtWidgets/qdialog.h \
 		/home/robin/Qt/5.4/gcc_64/include/QtWidgets/QLineEdit \
 		/home/robin/Qt/5.4/gcc_64/include/QtWidgets/qlineedit.h \
 		/home/robin/Qt/5.4/gcc_64/include/QtWidgets/qframe.h \
@@ -3313,16 +3439,371 @@ config.o: ../projet3_trading_RC/config.cpp ../projet3_trading_RC/config.h \
 		/home/robin/Qt/5.4/gcc_64/include/QtGui/qtextoption.h \
 		/home/robin/Qt/5.4/gcc_64/include/QtWidgets/QPushButton \
 		/home/robin/Qt/5.4/gcc_64/include/QtWidgets/qpushbutton.h \
-		/home/robin/Qt/5.4/gcc_64/include/QtWidgets/qabstractbutton.h \
-		/home/robin/Qt/5.4/gcc_64/include/QtGui/qicon.h \
-		/home/robin/Qt/5.4/gcc_64/include/QtWidgets/QFormLayout \
-		/home/robin/Qt/5.4/gcc_64/include/QtWidgets/qformlayout.h \
-		/home/robin/Qt/5.4/gcc_64/include/QtWidgets/QLayout \
+		/home/robin/Qt/5.4/gcc_64/include/QtCore/QSettings \
+		/home/robin/Qt/5.4/gcc_64/include/QtCore/qsettings.h \
+		../projet3_trading_RC/mainwindow.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtWidgets/QMainWindow \
+		/home/robin/Qt/5.4/gcc_64/include/QtWidgets/qmainwindow.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtWidgets/qtabwidget.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtWidgets/QtWidgets \
+		/home/robin/Qt/5.4/gcc_64/include/QtWidgets/QtWidgetsDepends \
+		/home/robin/Qt/5.4/gcc_64/include/QtCore/QtCore \
+		/home/robin/Qt/5.4/gcc_64/include/QtCore/QtCoreDepends \
+		/home/robin/Qt/5.4/gcc_64/include/QtCore/qabstractanimation.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtCore/qanimationgroup.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtCore/qparallelanimationgroup.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtCore/qpauseanimation.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtCore/qpropertyanimation.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtCore/qvariantanimation.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtCore/qeasingcurve.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtCore/qsequentialanimationgroup.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtCore/qtextcodec.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtCore/qendian.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtCore/qlibraryinfo.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtCore/qdatetime.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtCore/qbuffer.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtCore/qdir.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtCore/qfileinfo.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtCore/qdiriterator.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtCore/qfileselector.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtCore/QObject \
+		/home/robin/Qt/5.4/gcc_64/include/QtCore/QStringList \
+		/home/robin/Qt/5.4/gcc_64/include/QtCore/qfilesystemwatcher.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtCore/qlockfile.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtCore/qloggingcategory.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtCore/qprocess.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtCore/qresource.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtCore/qsavefile.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtCore/qstandardpaths.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtCore/qstorageinfo.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtCore/qtemporarydir.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtCore/QScopedPointer \
+		/home/robin/Qt/5.4/gcc_64/include/QtCore/qtemporaryfile.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtCore/qabstractitemmodel.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtCore/qabstractproxymodel.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtCore/qidentityproxymodel.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtCore/qitemselectionmodel.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtCore/qsortfilterproxymodel.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtCore/qstringlistmodel.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtCore/qjsonarray.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtCore/qjsonvalue.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtCore/qjsondocument.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtCore/qjsonobject.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtCore/qabstracteventdispatcher.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtCore/qeventloop.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtCore/qabstractnativeeventfilter.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtCore/qbasictimer.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtCore/qcoreapplication.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtCore/qmath.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtCore/qmetaobject.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtCore/qmimedata.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtCore/qobjectcleanuphandler.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtCore/qpointer.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtCore/qsharedmemory.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtCore/qsignalmapper.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtCore/qsocketnotifier.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtCore/qsystemsemaphore.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtCore/qtimer.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtCore/qtranslator.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtCore/qwineventnotifier.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtCore/qmimedatabase.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtCore/qmimetype.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtCore/qfactoryinterface.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtCore/qlibrary.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtCore/qplugin.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtCore/qpluginloader.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtCore/quuid.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtCore/qabstractstate.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtCore/qabstracttransition.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtCore/qeventtransition.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtCore/qfinalstate.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtCore/qhistorystate.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtCore/qsignaltransition.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtCore/qstate.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtCore/qstatemachine.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtCore/qexception.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtCore/qfuture.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtCore/qfutureinterface.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtCore/qrunnable.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtCore/qresultstore.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtCore/qfuturesynchronizer.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtCore/qfuturewatcher.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtCore/qreadwritelock.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtCore/qsemaphore.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtCore/qthread.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtCore/qthreadpool.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtCore/qthreadstorage.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtCore/qwaitcondition.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtCore/qarraydataops.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtCore/qarraydatapointer.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtCore/qbitarray.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtCore/qbytearraymatcher.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtCore/qcache.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtCore/qcollator.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtCore/qcommandlineoption.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtCore/qcommandlineparser.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtCore/qcryptographichash.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtCore/qelapsedtimer.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtCore/qlinkedlist.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtCore/qmessageauthenticationcode.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtCore/qqueue.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtCore/qregularexpression.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtCore/qscopedvaluerollback.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtCore/qstack.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtCore/qtextboundaryfinder.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtCore/qtimeline.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtCore/qtimezone.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtCore/qxmlstream.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtCore/qtcoreversion.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtGui/QtGui \
+		/home/robin/Qt/5.4/gcc_64/include/QtGui/QtGuiDepends \
+		/home/robin/Qt/5.4/gcc_64/include/QtGui/qaccessible.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtGui/qaccessiblebridge.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtGui/qaccessibleobject.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtGui/qaccessibleplugin.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtGui/qbitmap.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtGui/qiconengine.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtGui/qiconengineplugin.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtGui/qimageiohandler.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtGui/qimagereader.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtGui/qimagewriter.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtGui/qmovie.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtGui/qpicture.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtGui/qpictureformatplugin.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtGui/qpixmapcache.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtGui/qstandarditemmodel.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtGui/qclipboard.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtGui/qdrag.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtGui/qgenericplugin.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtGui/qgenericpluginfactory.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtGui/qguiapplication.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtGui/qinputmethod.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtGui/qoffscreensurface.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtGui/qsurface.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtGui/qsurfaceformat.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtGui/qopenglcontext.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtGui/QSurfaceFormat \
+		/home/robin/Qt/5.4/gcc_64/include/QtGui/qopengl.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtCore/qt_windows.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtGui/qopengles2ext.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtGui/qopenglext.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtGui/qopenglversionfunctions.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtGui/qopenglwindow.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtGui/QPaintDeviceWindow \
+		/home/robin/Qt/5.4/gcc_64/include/QtGui/qpaintdevicewindow.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtGui/QWindow \
+		/home/robin/Qt/5.4/gcc_64/include/QtGui/qwindow.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtCore/QEvent \
+		/home/robin/Qt/5.4/gcc_64/include/QtCore/QMargins \
+		/home/robin/Qt/5.4/gcc_64/include/QtCore/QRect \
+		/home/robin/Qt/5.4/gcc_64/include/QtGui/QPaintDevice \
+		/home/robin/Qt/5.4/gcc_64/include/QtGui/QOpenGLContext \
+		/home/robin/Qt/5.4/gcc_64/include/QtGui/QImage \
+		/home/robin/Qt/5.4/gcc_64/include/QtGui/qrasterwindow.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtGui/qscreen.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtCore/QList \
+		/home/robin/Qt/5.4/gcc_64/include/QtCore/QSize \
+		/home/robin/Qt/5.4/gcc_64/include/QtCore/QSizeF \
+		/home/robin/Qt/5.4/gcc_64/include/QtGui/QTransform \
+		/home/robin/Qt/5.4/gcc_64/include/QtGui/qsessionmanager.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtGui/qstylehints.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtGui/qgenericmatrix.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtGui/qmatrix4x4.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtGui/qvector3d.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtGui/qvector4d.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtGui/qquaternion.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtGui/qopenglbuffer.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtGui/qopengldebug.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtGui/qopenglframebufferobject.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtGui/qopenglfunctions.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtGui/qopenglpaintdevice.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtGui/qopenglpixeltransferoptions.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtCore/QSharedDataPointer \
+		/home/robin/Qt/5.4/gcc_64/include/QtGui/qopenglshaderprogram.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtGui/qopengltexture.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtGui/qopengltimerquery.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtGui/qopenglvertexarrayobject.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtGui/qbackingstore.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtGui/qpagedpaintdevice.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtGui/qpagelayout.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtGui/qpagesize.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtGui/qpaintengine.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtGui/qpainter.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtGui/qpdfwriter.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtGui/qabstracttextdocumentlayout.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtGui/qtextlayout.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtGui/qglyphrun.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtGui/qrawfont.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtGui/qfontdatabase.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtGui/qtextdocument.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtGui/qstatictext.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtGui/qsyntaxhighlighter.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtGui/qtextobject.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtGui/qtextdocumentfragment.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtGui/qtextdocumentwriter.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtGui/qtextlist.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtGui/qtexttable.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtGui/qdesktopservices.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtGui/qvalidator.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtGui/qtguiversion.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtWidgets/complexwidgets.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtWidgets/qaccessiblewidget.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtWidgets/qabstractitemview.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtWidgets/qabstractscrollarea.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtWidgets/qabstractitemdelegate.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtWidgets/qstyleoption.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtWidgets/qabstractspinbox.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtWidgets/qslider.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtWidgets/qabstractslider.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtWidgets/qstyle.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtWidgets/qtabbar.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtWidgets/qrubberband.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtWidgets/itemviews.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtWidgets/qheaderview.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtWidgets/qaccessiblemenu.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtWidgets/qaccessiblewidgets.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtCore/QPointer \
+		/home/robin/Qt/5.4/gcc_64/include/QtCore/QPair \
+		/home/robin/Qt/5.4/gcc_64/include/QtWidgets/rangecontrols.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtWidgets/simplewidgets.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtWidgets/qcolordialog.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtWidgets/qerrormessage.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtWidgets/qfiledialog.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtWidgets/qfilesystemmodel.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtWidgets/qfontdialog.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtWidgets/qinputdialog.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtWidgets/qmessagebox.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtWidgets/qprogressdialog.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtWidgets/qwizard.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtWidgets/qgraphicseffect.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtWidgets/qgraphicsanchorlayout.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtWidgets/qgraphicsitem.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtWidgets/qgraphicslayout.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtWidgets/qgraphicslayoutitem.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtWidgets/qgraphicsgridlayout.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtWidgets/qgraphicsitemanimation.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtWidgets/qgraphicslinearlayout.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtWidgets/qgraphicsproxywidget.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtWidgets/qgraphicswidget.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtWidgets/qgraphicsscene.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtWidgets/qgraphicssceneevent.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtWidgets/qgraphicstransform.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtGui/QVector3D \
+		/home/robin/Qt/5.4/gcc_64/include/QtGui/QMatrix4x4 \
+		/home/robin/Qt/5.4/gcc_64/include/QtWidgets/qgraphicsview.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtWidgets/qscrollarea.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtWidgets/qcolumnview.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtWidgets/qdatawidgetmapper.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtWidgets/qdirmodel.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtWidgets/qfileiconprovider.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtWidgets/qitemdelegate.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtWidgets/qitemeditorfactory.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtWidgets/qlistview.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtWidgets/qlistwidget.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtWidgets/qstyleditemdelegate.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtWidgets/qtableview.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtWidgets/qtablewidget.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtWidgets/qtreeview.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtWidgets/qtreewidget.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtWidgets/qtreewidgetitemiterator.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtWidgets/qaction.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtWidgets/qactiongroup.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtWidgets/qapplication.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtWidgets/qdesktopwidget.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtWidgets/qboxlayout.h \
 		/home/robin/Qt/5.4/gcc_64/include/QtWidgets/qlayout.h \
 		/home/robin/Qt/5.4/gcc_64/include/QtWidgets/qlayoutitem.h \
-		/home/robin/Qt/5.4/gcc_64/include/QtWidgets/qboxlayout.h \
 		/home/robin/Qt/5.4/gcc_64/include/QtWidgets/qgridlayout.h \
-		/home/robin/Qt/5.4/gcc_64/include/QtWidgets/QVBoxLayout
+		/home/robin/Qt/5.4/gcc_64/include/QtWidgets/qformlayout.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtWidgets/QLayout \
+		/home/robin/Qt/5.4/gcc_64/include/QtWidgets/qgesture.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtWidgets/qgesturerecognizer.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtWidgets/qopenglwidget.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtWidgets/QWidget \
+		/home/robin/Qt/5.4/gcc_64/include/QtWidgets/qshortcut.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtWidgets/qstackedlayout.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtWidgets/qtooltip.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtWidgets/qwhatsthis.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtWidgets/qwidgetaction.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtWidgets/qkeyeventtransition.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtWidgets/qmouseeventtransition.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtWidgets/qcommonstyle.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtWidgets/qdrawutil.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtWidgets/qproxystyle.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtWidgets/QCommonStyle \
+		/home/robin/Qt/5.4/gcc_64/include/QtWidgets/qstylefactory.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtWidgets/qstylepainter.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtWidgets/qstyleplugin.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtWidgets/qcolormap.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtWidgets/qcompleter.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtWidgets/qscroller.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtCore/QPointF \
+		/home/robin/Qt/5.4/gcc_64/include/QtWidgets/QScrollerProperties \
+		/home/robin/Qt/5.4/gcc_64/include/QtWidgets/qscrollerproperties.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtCore/QMetaType \
+		/home/robin/Qt/5.4/gcc_64/include/QtCore/QVariant \
+		/home/robin/Qt/5.4/gcc_64/include/QtWidgets/qsystemtrayicon.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtWidgets/qundogroup.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtWidgets/qundostack.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtWidgets/qundoview.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtWidgets/qbuttongroup.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtWidgets/qcalendarwidget.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtWidgets/qcombobox.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtWidgets/qcommandlinkbutton.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtWidgets/qdatetimeedit.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtWidgets/qdial.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtWidgets/qdialogbuttonbox.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtWidgets/qdockwidget.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtWidgets/qfocusframe.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtWidgets/qfontcombobox.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtWidgets/qgroupbox.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtWidgets/qkeysequenceedit.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtWidgets/qlabel.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtWidgets/qlcdnumber.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtWidgets/qmdiarea.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtWidgets/qmdisubwindow.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtWidgets/qmenu.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtWidgets/qmenubar.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtWidgets/qplaintextedit.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtWidgets/qtextedit.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtWidgets/qprogressbar.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtWidgets/qradiobutton.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtWidgets/qscrollbar.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtWidgets/qsizegrip.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtWidgets/qspinbox.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtWidgets/qsplashscreen.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtWidgets/qsplitter.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtWidgets/qstackedwidget.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtWidgets/qstatusbar.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtWidgets/qtextbrowser.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtWidgets/qtoolbar.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtWidgets/qtoolbox.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtWidgets/qtoolbutton.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtWidgets/qtwidgetsversion.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtWebKit/QWebElement \
+		/home/robin/Qt/5.4/gcc_64/include/QtWebKit/qwebelement.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtWebKit/qwebkitglobal.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtSql/QSqlDatabase \
+		/home/robin/Qt/5.4/gcc_64/include/QtSql/qsqldatabase.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtSql/qsql.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtWebKitWidgets/QWebView \
+		/home/robin/Qt/5.4/gcc_64/include/QtWebKitWidgets/qwebview.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtWebKitWidgets/qwebpage.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtWebKit/qwebsettings.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtNetwork/qnetworkaccessmanager.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtNetwork/QSslConfiguration \
+		/home/robin/Qt/5.4/gcc_64/include/QtNetwork/qsslconfiguration.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtNetwork/qsslsocket.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtNetwork/qtcpsocket.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtNetwork/qabstractsocket.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtNetwork/qsslerror.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtNetwork/qsslcertificate.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtNetwork/qssl.h \
+		/home/robin/Qt/5.4/gcc_64/include/QtCore/QFlags \
+		/home/robin/Qt/5.4/gcc_64/include/QtWidgets/QFormLayout \
+		/home/robin/Qt/5.4/gcc_64/include/QtWidgets/QGroupBox \
+		/home/robin/Qt/5.4/gcc_64/include/QtWidgets/QVBoxLayout \
+		/home/robin/Qt/5.4/gcc_64/include/QtCore/QDir
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o config.o ../projet3_trading_RC/config.cpp
 
 moc_mainwindow.o: moc_mainwindow.cpp 
@@ -3330,6 +3811,9 @@ moc_mainwindow.o: moc_mainwindow.cpp
 
 moc_connectiondb.o: moc_connectiondb.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_connectiondb.o moc_connectiondb.cpp
+
+moc_config.o: moc_config.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_config.o moc_config.cpp
 
 ####### Install
 

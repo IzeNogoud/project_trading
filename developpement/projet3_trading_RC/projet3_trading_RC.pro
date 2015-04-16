@@ -27,5 +27,4 @@ HEADERS  += mainwindow.h \
     connectiondb.h \
     help.h \
     faq.h \
-    config.h \
-    xml.h
+    config.h

@@ -10,11 +10,18 @@
 #include <QNetworkAccessManager>
 #include <QSqlQuery>
 #include <QSqlRecord>
+#include <QIODevice>
+#include <QSettings>
+#include <QXmlStreamReader>
+#include <QString>
 
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
 {
+    QSettings::Format XmlFormat = QSettings::registerFormat("xml", readXmlFile, writeXmlFile);
+    QSettings::setPath(XmlFormat, QSettings::UserScope, QDir::currentPath());
+    QSettings settings(XmlFormat, QSettings::UserScope, ".config", "Project_Trading");
 
     /** Fixe des dimensions à l'ouverture de la fenêtre principale, et indique le titre de la fenêtre. */
     setFixedSize(875,330);
@@ -49,6 +56,7 @@ MainWindow::MainWindow(QWidget *parent)
     /** Créer la connection lors du clic, pour afficher le tableau des cotations pour les devise Euros / Franc suisse*/
     eurChfAct = toolBar->addAction( "Euro / Franc Suisse" );
     connect(eurChfAct, SIGNAL(triggered()), this, SLOT(showEurChf()));
+    if(settings.value("filesConfig/cBoxEFS").toBool() == false) eurChfAct->setVisible(false);
 
     /** A la modification de la date de filtre, un signal est envoyé pour rafraichir et ré-afficher le tableau filtrer*/
     dateDebut = new QDateEdit(this);
@@ -96,19 +104,29 @@ MainWindow::~MainWindow()
 /** Charge la page entière de l'URL renseignée */
 void MainWindow::loadWebView()
 {
+    QSettings::Format XmlFormat = QSettings::registerFormat("xml", readXmlFile, writeXmlFile);
+    QSettings::setPath(XmlFormat, QSettings::UserScope, QDir::currentPath());
+    QSettings settings(XmlFormat, QSettings::UserScope, ".config", "Project_Trading");
+
+
     webView = new QWebView;
-    webView->load(QUrl("http://fxrates.fr.forexprostools.com/index.php?force_lang=5&pairs_ids=1;10"));
+    webView->load(QUrl(settings.value("filesConfig/Adresse").toString()));
     connect(webView, SIGNAL(loadFinished(bool)), this, SLOT(elementSearch())); /** Appel un slot à la fin du chargement */
     webView->hide(); /** cache le widget généré */
+
 
 }
 
 /** Recherche dans la page les lignes du tableau uis chaque colone afin de la rentré dans la base de données */
 void MainWindow::elementSearch()
 {
+    QSettings::Format XmlFormat = QSettings::registerFormat("xml", readXmlFile, writeXmlFile);
+    QSettings::setPath(XmlFormat, QSettings::UserScope, QDir::currentPath());
+    QSettings settings(XmlFormat, QSettings::UserScope, ".config", "Project_Trading");
+
     /** connection a la base pour l'insertion */
     db = QSqlDatabase::addDatabase("QSQLITE");
-    db.setDatabaseName("forex.db");
+    db.setDatabaseName(settings.value("NomBase").toString());
 
     /** récupère le corp de la page pour pouvoir le manipuler */
     docElement = webView->page()->mainFrame()->documentElement();
@@ -156,6 +174,7 @@ void MainWindow::elementSearch()
 /** Affiche le tableau de devise euro / dollar */
 void MainWindow::showEurUsd()
 {
+
     dateDebutString = dateDebut->date().toString("dd.MM.yyyy");
     dateFinString = dateFin->date().toString("dd.MM.yyyy");
     ConnectionDB(this, dateDebutString, dateFinString, "EUR/USD");
@@ -191,6 +210,97 @@ void MainWindow::configUrl()
 {
     Config* config = new Config(this);
     config->exec();
+}
+
+bool readXmlFile(QIODevice &device, QSettings::SettingsMap &map) {
+  QXmlStreamReader xmlReader(&device);
+  QStringList elements;
+
+  // Solange Ende nicht erreicht und kein Fehler aufgetreten ist
+  while (!xmlReader.atEnd() && !xmlReader.hasError()) {
+    // Nächsten Token lesen
+    xmlReader.readNext();
+
+    // Wenn Token ein Startelement
+    if (xmlReader.isStartElement() && xmlReader.name() != "Settings") {
+      // Element zur Liste hinzufügen
+      elements.append(xmlReader.name().toString());
+    // Wenn Token ein Endelement
+    } else if (xmlReader.isEndElement()) {
+      // Letztes Element löschen
+      if(!elements.isEmpty()) elements.removeLast();
+    // Wenn Token einen Wert enthält
+    } else if (xmlReader.isCharacters() && !xmlReader.isWhitespace()) {
+      QString key;
+
+      // Elemente zu String hinzufügen
+      for(int i = 0; i < elements.size(); i++) {
+        if(i != 0) key += "/";
+        key += elements.at(i);
+      }
+
+      // Wert in Map eintragen
+      map[key] = xmlReader.text().toString();
+    }
+  }
+
+  // Bei Fehler Warnung ausgeben
+  if (xmlReader.hasError()) {
+    qDebug() << xmlReader.errorString();
+    return false;
+  }
+
+  return true;
+}
+
+
+
+bool writeXmlFile(QIODevice &device, const QSettings::SettingsMap &map) {
+  QXmlStreamWriter xmlWriter(&device);
+
+  xmlWriter.setAutoFormatting(true);
+  xmlWriter.writeStartDocument();
+  xmlWriter.writeStartElement("Settings");
+
+  QStringList prev_elements;
+  QSettings::SettingsMap::ConstIterator map_i;
+
+  // Alle Elemente der Map durchlaufen
+  for (map_i = map.begin(); map_i != map.end(); map_i++) {
+
+    QStringList elements = map_i.key().split("/");
+
+    int x = 0;
+    // Zu schließende Elemente ermitteln
+    while(x < prev_elements.size() && elements.at(x) == prev_elements.at(x)) {
+      x++;
+    }
+
+    // Elemente schließen
+    for(int i = prev_elements.size() - 1; i >= x; i--) {
+      xmlWriter.writeEndElement();
+    }
+
+    // Elemente öffnen
+    for (int i = x; i < elements.size(); i++) {
+      xmlWriter.writeStartElement(elements.at(i));
+    }
+
+    // Wert eintragen
+    xmlWriter.writeCharacters(map_i.value().toString());
+
+    prev_elements = elements;
+  }
+
+  // Noch offene Elemente schließen
+  for(int i = 0; i < prev_elements.size(); i++) {
+    xmlWriter.writeEndElement();
+  }
+
+  xmlWriter.writeEndElement();
+  xmlWriter.writeEndDocument();
+
+  return true;
 }
 
 

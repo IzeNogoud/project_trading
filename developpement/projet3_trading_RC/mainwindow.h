@@ -16,6 +16,7 @@ public:
     MainWindow(QWidget *parent = 0);
     ~MainWindow();
 
+
 public slots:
 
     void        About();
@@ -60,10 +61,9 @@ private:
     QDateEdit* dateFin;
     QDateEdit* dateDebut;
 
-
-
-
-
 };
+
+bool readXmlFile(QIODevice &device, QSettings::SettingsMap &map);
+bool writeXmlFile(QIODevice &device, const QSettings::SettingsMap &map);
 
 #endif // MAINWINDOW_H
