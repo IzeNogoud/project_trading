@@ -34,32 +34,31 @@ public slots:
 
 private:
 
-    QSignalMapper*      signalMapper;
+    QSignalMapper*          signalMapper;
 
-    QMenuBar*           barMenu ;
-    QMenu*              aboutMenu ;
-    QMenu*              fileMenu ;
-    QAction*            helpAct ;
-    QAction*            configAct ;
-    QAction*            aideAct ;
-    QAction*            eurUsdAct ;
-    QAction*            eurChfAct ;
-    QToolBar*           toolBar;
+    QMenuBar*               barMenu ;
+    QMenu*                  aboutMenu ;
+    QMenu*                  fileMenu ;
+    QAction*                helpAct ;
+    QAction*                configAct ;
+    QAction*                aideAct ;
+    QAction*                eurUsdAct ;
+    QAction*                eurChfAct ;
+    QToolBar*               toolBar;
 
-    QWebView*           webView ;
-    QWebElement         docElement;
-    QWebElementCollection element;
-    QWebElementCollection element2;
+    QWebView*               webView ;
+    QWebElement             docElement;
+    QWebElementCollection   element;
+    QWebElementCollection   element2;
 
     QSqlDatabase            db;
 
+    QString                 nom, achat, vente, haut, bas, var, date;
 
-    QString nom, achat, vente, haut, bas, var, date;
-
-    QString dateDebutString;
-    QString dateFinString;
-    QDateEdit* dateFin;
-    QDateEdit* dateDebut;
+    QString                 dateDebutString;
+    QString                 dateFinString;
+    QDateEdit*              dateFin;
+    QDateEdit*              dateDebut;
 
 };
 

@@ -25,7 +25,7 @@ MainWindow::MainWindow(QWidget *parent)
     QSettings settings(XmlFormat, QSettings::UserScope, ".config", "Project_Trading");
 
     /** Fixe des dimensions à l'ouverture de la fenêtre principale, et indique le titre de la fenêtre. */
-    setFixedSize(875,330);
+    setFixedSize(880,330);
     move(200,200);
     setWindowTitle("Fluctu'Action");
     setWindowIcon(QIcon("fluctu_opt.png"));
@@ -151,7 +151,7 @@ void MainWindow::elementSearch()
             else
             {
                 QSqlQueryModel* model = new QSqlQueryModel;
-                model->setQuery(QString("SELECT Nom, Var FROM deviseTable WHERE Nom like '%" + element2.at(0).toPlainText() + "' ORDER BY Heure DESC limit 1"), db);
+                model->setQuery(QString("SELECT Nom, Var FROM deviseTable WHERE Nom like '%" + element2.at(0).toPlainText() + "' ORDER BY Date DESC, Heure DESC"), db);
 
                 qDebug() << model->record(0).value(0).toString();
                 qDebug() << element2.at(0).toPlainText();

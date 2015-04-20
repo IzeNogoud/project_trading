@@ -2,7 +2,8 @@
 #define FAQ_H
 
 #include <QDialog>
-#include <QPushButton>
+
+class QPushButton;
 
 class Faq : public QDialog
 {

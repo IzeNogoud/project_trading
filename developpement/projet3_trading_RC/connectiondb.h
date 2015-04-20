@@ -2,13 +2,14 @@
 #define CONNECTIONDB_H
 
 #include <QSqlDatabase>
-#include <QSqlTableModel>
 #include <QVBoxLayout>
-#include <QWidget>
 #include <QNetworkAccessManager>
 #include <QWebPage>
 #include <QWebView>
 #include <QWebElement>
+
+class QSqlTableModel;
+class QWidget;
 
 
 class ConnectionDB : public QObject
@@ -33,9 +34,6 @@ private:
     QString                 m_debut;
     QString                 m_fin;
     QString                 m_devise;
-
-
-
 
 };
 

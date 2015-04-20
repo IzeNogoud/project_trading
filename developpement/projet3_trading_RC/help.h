@@ -2,8 +2,8 @@
 #define HELP_H
 
 #include <QDialog>
-#include <QPushButton>
 
+class QPushButton;
 
 class Help : public QDialog
 {

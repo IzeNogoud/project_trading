@@ -56,7 +56,7 @@ ConnectionDB::ConnectionDB(QWidget *parent, QString debut, QString fin, QString 
 
         /** Initialise le tableau a afficher */
         QTableView* view = new QTableView(m_parent) ;
-        view->setGeometry(20,100,839,200);
+        view->setGeometry(20,100,850,210);
         view->setModel( model );
 
         /** Affiche le tableau avec les données récupérées de la base de données */

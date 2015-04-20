@@ -1,11 +1,14 @@
 #ifndef CONFIG_H
 #define CONFIG_H
 
-#include <QCheckBox>
+
 #include <QDialog>
-#include <QLineEdit>
-#include <QPushButton>
 #include <QSettings>
+
+class QPushButton;
+class QCheckBox;
+class QLineEdit;
+
 
 class Config : public QDialog
 {
@@ -16,7 +19,7 @@ public:
     ~Config();
 
 public slots:
-    void sauvegarder();
+    void            sauvegarder();
 
 private:
     QPushButton*    closeButton;
@@ -24,10 +27,10 @@ private:
     QLineEdit*      adresseLine ;
     QLineEdit*      baseNameLine ;
 
-    QCheckBox* eurUsdDl;
-    QCheckBox* eurChfDl;
-    QCheckBox* eurUsdShow;
-    QCheckBox* eurChfShow;
+    QCheckBox*      eurUsdDl;
+    QCheckBox*      eurChfDl;
+    QCheckBox*      eurUsdShow;
+    QCheckBox*      eurChfShow;
 
 
 };
