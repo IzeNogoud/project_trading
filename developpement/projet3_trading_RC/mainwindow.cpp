@@ -19,7 +19,6 @@
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
 {
-
     QSettings::Format XmlFormat = QSettings::registerFormat("xml", readXmlFile, writeXmlFile);
     QSettings::setPath(XmlFormat, QSettings::UserScope, QDir::currentPath());
     QSettings settings(XmlFormat, QSettings::UserScope, ".config", "Project_Trading");
@@ -29,6 +28,8 @@ MainWindow::MainWindow(QWidget *parent)
     move(200,200);
     setWindowTitle("Fluctu'Action");
     setWindowIcon(QIcon("fluctu_opt.png"));
+
+    /** Ajout d'une image à l'ouverture de l'application */
     QLabel* image = new QLabel(this);
     image->setPixmap(QPixmap("fluctu2.png"));
     image->move(350,100);
@@ -109,11 +110,12 @@ void MainWindow::loadWebView()
     QSettings::setPath(XmlFormat, QSettings::UserScope, QDir::currentPath());
     QSettings settings(XmlFormat, QSettings::UserScope, ".config", "Project_Trading");
 
+    /** Concatène l'identification des cotations cocher à l'url pour le téléchargement des données */
     QString idCotation;
     if(settings.value("filesConfig/cBoxEDdl").toBool() == true) idCotation += "1;";
     if(settings.value("filesConfig/cBoxEFSdl").toBool() == true) idCotation += "10";
 
-
+    /** Crée un webview et charge l'url renseigné + les cotations cocher */
     webView = new QWebView;
     webView->load(QUrl(settings.value("filesConfig/Adresse").toString() + idCotation));
     connect(webView, SIGNAL(loadFinished(bool)), this, SLOT(elementSearch())); /** Appel un slot à la fin du chargement */
@@ -153,11 +155,7 @@ void MainWindow::elementSearch()
                 QSqlQueryModel* model = new QSqlQueryModel;
                 model->setQuery(QString("SELECT Nom, Var FROM deviseTable WHERE Nom like '%" + element2.at(0).toPlainText() + "' ORDER BY Date DESC, Heure DESC"), db);
 
-                qDebug() << model->record(0).value(0).toString();
-                qDebug() << element2.at(0).toPlainText();
-                qDebug() << model->record(0).value(1).toString();
-                qDebug() << element2.at(6).toPlainText();
-
+                /** Vérifie les dernière données de la base pour éviter les doublons */
                 if( ( model->record(0).value(0).toString() == element2.at(0).toPlainText() ) &&
                         ( model->record(0).value(1).toString() != element2.at(6).toPlainText() ) ||
                         ( ( model->record(0).value(0).toString() == "") && ( model->record(0).value(1).toString() == "")) )
@@ -222,39 +220,36 @@ void MainWindow::configUrl()
     config->exec();
 }
 
+
+/** Fonction permettant de lire un fichier Xml */
 bool readXmlFile(QIODevice &device, QSettings::SettingsMap &map) {
   QXmlStreamReader xmlReader(&device);
   QStringList elements;
 
-  // Solange Ende nicht erreicht und kein Fehler aufgetreten ist
-  while (!xmlReader.atEnd() && !xmlReader.hasError()) {
-    // Nächsten Token lesen
+  while (!xmlReader.atEnd() && !xmlReader.hasError())
+  {
     xmlReader.readNext();
 
-    // Wenn Token ein Startelement
-    if (xmlReader.isStartElement() && xmlReader.name() != "Settings") {
-      // Element zur Liste hinzufügen
-      elements.append(xmlReader.name().toString());
-    // Wenn Token ein Endelement
-    } else if (xmlReader.isEndElement()) {
-      // Letztes Element löschen
-      if(!elements.isEmpty()) elements.removeLast();
-    // Wenn Token einen Wert enthält
-    } else if (xmlReader.isCharacters() && !xmlReader.isWhitespace()) {
-      QString key;
+        if (xmlReader.isStartElement() && xmlReader.name() != "Settings")
+        {
+            elements.append(xmlReader.name().toString());
+        }
+        else if (xmlReader.isEndElement())
+        {
+        if(!elements.isEmpty()) elements.removeLast();
+        }
+        else if (xmlReader.isCharacters() && !xmlReader.isWhitespace()) {
 
-      // Elemente zu String hinzufügen
+            QString key;
+
       for(int i = 0; i < elements.size(); i++) {
         if(i != 0) key += "/";
         key += elements.at(i);
       }
-
-      // Wert in Map eintragen
       map[key] = xmlReader.text().toString();
     }
   }
 
-  // Bei Fehler Warnung ausgeben
   if (xmlReader.hasError()) {
     qDebug() << xmlReader.errorString();
     return false;
@@ -264,7 +259,7 @@ bool readXmlFile(QIODevice &device, QSettings::SettingsMap &map) {
 }
 
 
-
+/** Fonction permettant d'écrire dans un fichier Xml */
 bool writeXmlFile(QIODevice &device, const QSettings::SettingsMap &map) {
   QXmlStreamWriter xmlWriter(&device);
 
@@ -275,34 +270,28 @@ bool writeXmlFile(QIODevice &device, const QSettings::SettingsMap &map) {
   QStringList prev_elements;
   QSettings::SettingsMap::ConstIterator map_i;
 
-  // Alle Elemente der Map durchlaufen
   for (map_i = map.begin(); map_i != map.end(); map_i++) {
 
     QStringList elements = map_i.key().split("/");
 
     int x = 0;
-    // Zu schließende Elemente ermitteln
     while(x < prev_elements.size() && elements.at(x) == prev_elements.at(x)) {
       x++;
     }
 
-    // Elemente schließen
     for(int i = prev_elements.size() - 1; i >= x; i--) {
       xmlWriter.writeEndElement();
     }
 
-    // Elemente öffnen
     for (int i = x; i < elements.size(); i++) {
       xmlWriter.writeStartElement(elements.at(i));
     }
 
-    // Wert eintragen
     xmlWriter.writeCharacters(map_i.value().toString());
 
     prev_elements = elements;
   }
 
-  // Noch offene Elemente schließen
   for(int i = 0; i < prev_elements.size(); i++) {
     xmlWriter.writeEndElement();
   }

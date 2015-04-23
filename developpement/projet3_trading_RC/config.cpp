@@ -1,3 +1,15 @@
+/**
+* \brief Cette classe permet l'affichage d'une fenêtre de configuration.
+* Crée un fichier Xml afin d'enregistrer les données renseigner par l'utilisateur
+* ------------
+* ------------
+* \author IzeNogoud
+* ------------
+* \date 24 Mars 2015
+*
+*/
+
+
 #include "config.h"
 #include "mainwindow.h"
 
@@ -11,15 +23,20 @@
 
 Config::Config(QWidget *parent = 0) : QDialog(parent)
 {
-
+    /** Initialise une variable pour l'écriture et la lecture du fichier Xml */
     QSettings::Format XmlFormat = QSettings::registerFormat("xml", readXmlFile, writeXmlFile);
+    /** Indique le chemin du fichier Xml */
     QSettings::setPath(XmlFormat, QSettings::UserScope, QDir::currentPath());
+    /** Initialise le nom du dossier et le nom du fichier  */
     QSettings settings(XmlFormat, QSettings::UserScope, ".config", "Project_Trading");
 
 
+    /** Permet d'ouvrir le groupe du fichier Xml */
     settings.beginGroup("filesConfig");
 
+    /** Recherche l'adresse url enregistré dans le fichier xml, une adresse par défault est renseigner si vide */
     adresseLine = new QLineEdit(settings.value("Adresse", "http://fxrates.fr.forexprostools.com/index.php?force_lang=5&pairs_ids=1;10" ).toString());
+    /** Recherche du nom de la base dans le fichier xml */
     baseNameLine = new QLineEdit(settings.value("NomBase", "forex.db").toString());
 
     setWindowTitle("Configuration"); /** Titre de la fenetre */
@@ -44,6 +61,7 @@ Config::Config(QWidget *parent = 0) : QDialog(parent)
 
     eurUsdDl = new QCheckBox("Euro / Dollar");
     eurChfDl = new QCheckBox("Euro / Franc suisse");
+    /** Recherche dans le fichier Xml les dernières valeur pour les checkbox */
     eurUsdDl->setChecked(settings.value("cBoxEDdl").toBool());
     eurChfDl->setChecked(settings.value("cBoxEFSdl").toBool());
 
@@ -77,6 +95,7 @@ Config::Config(QWidget *parent = 0) : QDialog(parent)
 
     setLayout(layout);
 
+    /** Ferme le groupe */
     settings.endGroup();
 }
 
@@ -85,9 +104,11 @@ Config::~Config()
 
 }
 
+/** Permet la sauvegarde  */
 void Config::sauvegarder()
 {
 
+    /** l'action de sauvegarder rinitialise l'application, on demande a l'utilisateur une confirmation */
     int reponse = QMessageBox::question(NULL, "Enregistrement et raifraichissement des paramètre", "L'enregistrement des nouveaux paramètres entrainera le rafraichissement de l'application !<br />Êtes vous sûr de vouloir continuer ?", QMessageBox::Yes | QMessageBox::No);
 
     if(reponse == QMessageBox::Yes)
@@ -99,9 +120,12 @@ void Config::sauvegarder()
 
     settings.beginGroup("filesConfig");
 
+    /** Ajout de l'adresse url renseigner par l'utilisateur dans le fichier Xml */
     settings.setValue("Adresse", adresseLine->text());
+    /** Ajout du nom de la base renseigner par l'utilisateur dans le fichier Xml */
     settings.setValue("NomBase", baseNameLine->text());
 
+    /** Ajoute au fichier Xml les valeurs des checkbox */
     settings.setValue("cBoxEDdl", eurUsdDl->isChecked());
     settings.setValue("cBoxEFSdl", eurChfDl->isChecked());
 
@@ -110,6 +134,7 @@ void Config::sauvegarder()
 
     settings.endGroup();
 
+    /** Ferme et relance l'application pour prendre les cahngement en compte */
     QProcess::startDetached(qApp->arguments()[0], qApp->arguments());
     qApp->quit();
     }
