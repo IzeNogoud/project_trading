@@ -70,8 +70,8 @@
 \fancyhead[RO]{\fancyplain{}{\bfseries\thepage}}
 \fancyfoot[LE]{\fancyplain{}{}}
 \fancyfoot[CE]{\fancyplain{}{}}
-\fancyfoot[RE]{\fancyplain{}{\bfseries\scriptsize Généré le Lundi 13 Avril 2015 09\-:25\-:38 pour project\-Trading par Doxygen }}
-\fancyfoot[LO]{\fancyplain{}{\bfseries\scriptsize Généré le Lundi 13 Avril 2015 09\-:25\-:38 pour project\-Trading par Doxygen }}
+\fancyfoot[RE]{\fancyplain{}{\bfseries\scriptsize Généré le Jeudi 23 Avril 2015 10\-:54\-:20 pour project\-\_\-trading\-\_\-doc par Doxygen }}
+\fancyfoot[LO]{\fancyplain{}{\bfseries\scriptsize Généré le Jeudi 23 Avril 2015 10\-:54\-:20 pour project\-\_\-trading\-\_\-doc par Doxygen }}
 \fancyfoot[CO]{\fancyplain{}{}}
 \fancyfoot[RO]{\fancyplain{}{}}
 \renewcommand{\footrulewidth}{0.4pt}
@@ -89,6 +89,20 @@
 \setcounter{secnumdepth}{5}
 \makeindex
 
+% Hyperlinks (required, but should be loaded last)
+\usepackage{ifpdf}
+\ifpdf
+  \usepackage[pdftex,pagebackref=true]{hyperref}
+\else
+  \usepackage[ps2pdf,pagebackref=true]{hyperref}
+\fi
+\hypersetup{%
+  colorlinks=true,%
+  linkcolor=blue,%
+  citecolor=blue,%
+  unicode%
+}
+
 % Custom commands
 \newcommand{\clearemptydoublepage}{%
   \newpage{\pagestyle{empty}\cleardoublepage}%
@@ -100,21 +114,23 @@
 \begin{document}
 
 % Titlepage & ToC
+\hypersetup{pageanchor=false}
 \pagenumbering{roman}
 \begin{titlepage}
 \vspace*{7cm}
 \begin{center}%
-{\Large project\-Trading }\\
+{\Large project\-\_\-trading\-\_\-doc }\\
 \vspace*{1cm}
 {\large Généré par Doxygen 1.8.6}\\
 \vspace*{0.5cm}
-{\small Lundi 13 Avril 2015 09:25:38}\\
+{\small Jeudi 23 Avril 2015 10:54:20}\\
 \end{center}
 \end{titlepage}
 \clearemptydoublepage
 \tableofcontents
 \clearemptydoublepage
 \pagenumbering{arabic}
+\hypersetup{pageanchor=true}
 
 %--- Begin generated contents ---
 \chapter{Index hiérarchique}

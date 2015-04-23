@@ -1,33 +1,92 @@
-\section{Référence de la classe Config}
+\hypertarget{class_config}{\section{Référence de la classe Config}
 \label{class_config}\index{Config@{Config}}
+}
 Graphe d'héritage de Config\-:\begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[height=2.000000cm]{class_config}
 \end{center}
 \end{figure}
+\subsection*{Connecteurs publics}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{class_config_a95b88eee3b3e19bb7c59aaa09fb215ec}{sauvegarder} ()
+\end{DoxyCompactItemize}
 \subsection*{Fonctions membres publiques}
 \begin{DoxyCompactItemize}
 \item 
-{\bf Config} (Q\-Widget $\ast$parent)
-\end{DoxyCompactItemize}
+\hyperlink{class_config_aae0ecaab37f2ef5794bd0ccbf992e6fc}{Config} (Q\-Widget $\ast$parent)
+\begin{DoxyCompactList}\small\item\em Cette classe permet l'affichage d'une fenêtre de configuration. \subsubsection*{Crée un fichier Xml afin d'enregistrer les données renseigner par l'utilisateur }
+
+
+
+ \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \subsection{Documentation des constructeurs et destructeur}
-\index{Config@{Config}!Config@{Config}}
+\hypertarget{class_config_aae0ecaab37f2ef5794bd0ccbf992e6fc}{\index{Config@{Config}!Config@{Config}}
 \index{Config@{Config}!Config@{Config}}
 \subsubsection[{Config}]{\setlength{\rightskip}{0pt plus 5cm}Config\-::\-Config (
 \begin{DoxyParamCaption}
 \item[{Q\-Widget $\ast$}]{parent = {\ttfamily 0}}
 \end{DoxyParamCaption}
-)}\label{class_config_aae0ecaab37f2ef5794bd0ccbf992e6fc}
+)}}\label{class_config_aae0ecaab37f2ef5794bd0ccbf992e6fc}
+
+
+Cette classe permet l'affichage d'une fenêtre de configuration. \subsubsection*{Crée un fichier Xml afin d'enregistrer les données renseigner par l'utilisateur }
+
+
+
+ 
+
+\subsubsection*{Ize\-Nogoud }
+
+\begin{DoxyDate}{Date}
+24 Mars 2015 
+\end{DoxyDate}
+Initialise une variable pour l'écriture et la lecture du fichier Xml
+
+Indique le chemin du fichier Xml
+
+Initialise le nom du dossier et le nom du fichier
+
+Permet d'ouvrir le groupe du fichier Xml
+
+Recherche l'adresse url enregistré dans le fichier xml, une adresse par défault est renseigner si vide
+
+Recherche du nom de la base dans le fichier xml
+
 Titre de la fenetre
 
 Bouton pour fermer la fenetre d'aide
 
 Slot de fermeture avec le bouton
 
-Affichage du texte et du bouton 
+Slot de sauvergarde
+
+Affichage du texte et du bouton
+
+Recherche dans le fichier Xml les dernières valeur pour les checkbox
+
+Ferme le groupe 
+
+\subsection{Documentation des fonctions membres}
+\hypertarget{class_config_a95b88eee3b3e19bb7c59aaa09fb215ec}{\index{Config@{Config}!sauvegarder@{sauvegarder}}
+\index{sauvegarder@{sauvegarder}!Config@{Config}}
+\subsubsection[{sauvegarder}]{\setlength{\rightskip}{0pt plus 5cm}void Config\-::sauvegarder (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [slot]}}}\label{class_config_a95b88eee3b3e19bb7c59aaa09fb215ec}
+Permet la sauvegarde l'action de sauvegarder rinitialise l'application, on demande a l'utilisateur une confirmation
+
+Ajout de l'adresse url renseigner par l'utilisateur dans le fichier Xml
+
+Ajout du nom de la base renseigner par l'utilisateur dans le fichier Xml
+
+Ajoute au fichier Xml les valeurs des checkbox
+
+Ferme et relance l'application pour prendre les cahngement en compte 
 
 La documentation de cette classe a été générée à partir des fichiers suivants \-:\begin{DoxyCompactItemize}
 \item 
