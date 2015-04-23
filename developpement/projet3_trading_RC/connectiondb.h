@@ -21,11 +21,6 @@ public:
     ConnectionDB(QWidget *parent, QString debut, QString fin, QString devise);
     ~ConnectionDB();
 
-
-
-public slots:
-
-
 private:
 
     QSqlDatabase            db;

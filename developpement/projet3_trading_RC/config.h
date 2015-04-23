@@ -9,7 +9,6 @@ class QPushButton;
 class QCheckBox;
 class QLineEdit;
 
-
 class Config : public QDialog
 {
     Q_OBJECT
@@ -31,7 +30,6 @@ private:
     QCheckBox*      eurChfDl;
     QCheckBox*      eurUsdShow;
     QCheckBox*      eurChfShow;
-
 
 };
 

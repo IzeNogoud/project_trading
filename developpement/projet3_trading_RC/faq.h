@@ -7,10 +7,10 @@ class QPushButton;
 
 class Faq : public QDialog
 {
+
 public:
     Faq(QWidget* parent);
     ~Faq();
-
 
 private:
     QPushButton* closeButton;

@@ -16,21 +16,15 @@ public:
     MainWindow(QWidget *parent = 0);
     ~MainWindow();
 
-
 public slots:
 
     void        About();
     void        Aide();
     void        showEurUsd();
     void        showEurChf();
-
-
     void        configUrl();
     void        elementSearch();
     void        loadWebView();
-
-
-
 
 private:
 
@@ -62,6 +56,7 @@ private:
 
 };
 
+/** Fonction pour la lecture et l'ecriture des données dans un fichier Xml */
 bool readXmlFile(QIODevice &device, QSettings::SettingsMap &map);
 bool writeXmlFile(QIODevice &device, const QSettings::SettingsMap &map);
 

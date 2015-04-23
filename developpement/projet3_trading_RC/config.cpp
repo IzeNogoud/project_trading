@@ -61,6 +61,7 @@ Config::Config(QWidget *parent = 0) : QDialog(parent)
 
     eurUsdDl = new QCheckBox("Euro / Dollar");
     eurChfDl = new QCheckBox("Euro / Franc suisse");
+
     /** Recherche dans le fichier Xml les dernières valeur pour les checkbox */
     eurUsdDl->setChecked(settings.value("cBoxEDdl").toBool());
     eurChfDl->setChecked(settings.value("cBoxEFSdl").toBool());
