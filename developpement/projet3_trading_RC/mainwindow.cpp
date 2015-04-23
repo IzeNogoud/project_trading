@@ -14,6 +14,7 @@
 #include <QSettings>
 #include <QXmlStreamReader>
 #include <QString>
+#include <QSqlQueryModel>
 
 
 MainWindow::MainWindow(QWidget *parent)
@@ -61,7 +62,7 @@ MainWindow::MainWindow(QWidget *parent)
     if(settings.value("filesConfig/cBoxEFS").toBool() == false) eurChfAct->setVisible(false);
 
     /** A la modification de la date de filtre, un signal est envoyé pour rafraichir et ré-afficher le tableau filtrer*/
-    dateDebut = new QDateEdit(this);
+    dateDebut = new QDateEdit(QDate::currentDate(),this);
     dateDebut->move(350,60);
     dateDebutString = dateDebut->date().toString("dd.MM.yyyy");
     connect(dateDebut, SIGNAL(dateChanged(QDate)), this, SLOT(showEurChf()));
@@ -71,13 +72,15 @@ MainWindow::MainWindow(QWidget *parent)
     dateFinString = dateFin->date().toString("dd.MM.yyyy");
     connect(dateFin, SIGNAL(dateChanged(QDate)), this, SLOT(showEurChf()));
 
+
     /** Créer la connection lors du clic, pour afficher le tableau des cotations pour les devise Euros / Dollar*/
     eurUsdAct = toolBar->addAction( "Euro / Dollar");
     connect(eurUsdAct, SIGNAL(triggered()), this, SLOT(showEurUsd()));
+    if(settings.value("filesConfig/cBoxED").toBool() == false) eurUsdAct->setVisible(false);
 
 
     /** A la modification de la date de filtre, un signal est envoyé pour rafraichir et ré-afficher le tableau filtrer*/
-    dateDebut = new QDateEdit(this);
+    dateDebut = new QDateEdit(QDate::currentDate(),this);
     dateDebut->move(350,60);
     dateDebutString = dateDebut->date().toString("dd.MM.yyyy");
     connect(dateDebut, SIGNAL(dateChanged(QDate)), this, SLOT(showEurUsd()));
