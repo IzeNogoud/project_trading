@@ -64,11 +64,13 @@ MainWindow::MainWindow(QWidget *parent)
     /** A la modification de la date de filtre, un signal est envoyé pour rafraichir et ré-afficher le tableau filtrer*/
     dateDebut = new QDateEdit(QDate::currentDate(),this);
     dateDebut->move(350,60);
+    dateDebut->setCalendarPopup(true);
     dateDebutString = dateDebut->date().toString("dd.MM.yyyy");
     connect(dateDebut, SIGNAL(dateChanged(QDate)), this, SLOT(showEurChf()));
 
     dateFin = new QDateEdit(QDate::currentDate(),this);
     dateFin->move(460,60);
+    dateFin->setCalendarPopup(true);
     dateFinString = dateFin->date().toString("dd.MM.yyyy");
     connect(dateFin, SIGNAL(dateChanged(QDate)), this, SLOT(showEurChf()));
 
@@ -82,11 +84,13 @@ MainWindow::MainWindow(QWidget *parent)
     /** A la modification de la date de filtre, un signal est envoyé pour rafraichir et ré-afficher le tableau filtrer*/
     dateDebut = new QDateEdit(QDate::currentDate(),this);
     dateDebut->move(350,60);
+    dateDebut->setCalendarPopup(true);
     dateDebutString = dateDebut->date().toString("dd.MM.yyyy");
     connect(dateDebut, SIGNAL(dateChanged(QDate)), this, SLOT(showEurUsd()));
 
     dateFin = new QDateEdit(QDate::currentDate(),this);
     dateFin->move(460,60);
+    dateFin->setCalendarPopup(true);
     dateFinString = dateFin->date().toString("dd.MM.yyyy");
     connect(dateFin, SIGNAL(dateChanged(QDate)), this, SLOT(showEurUsd()));
 
