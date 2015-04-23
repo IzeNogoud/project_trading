@@ -35,7 +35,7 @@ Config::Config(QWidget *parent = 0) : QDialog(parent)
     settings.beginGroup("filesConfig");
 
     /** Recherche l'adresse url enregistré dans le fichier xml, une adresse par défault est renseigner si vide */
-    adresseLine = new QLineEdit(settings.value("Adresse", "http://fxrates.fr.forexprostools.com/index.php?force_lang=5&pairs_ids=1;10" ).toString());
+    adresseLine = new QLineEdit(settings.value("Adresse", "http://fxrates.fr.forexprostools.com/index.php?force_lang=5&pairs_ids=" ).toString());
     /** Recherche du nom de la base dans le fichier xml */
     baseNameLine = new QLineEdit(settings.value("NomBase", "forex.db").toString());
 
