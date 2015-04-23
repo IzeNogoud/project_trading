@@ -28,3 +28,5 @@ HEADERS  += mainwindow.h \
     help.h \
     faq.h \
     config.h
+
+RESOURCES +=

@@ -4,8 +4,8 @@
         <Adresse>http://fxrates.fr.forexprostools.com/index.php?force_lang=5&amp;pairs_ids=</Adresse>
         <NomBase>forex.db</NomBase>
         <cBoxED>true</cBoxED>
-        <cBoxEDdl>true</cBoxEDdl>
+        <cBoxEDdl>false</cBoxEDdl>
         <cBoxEFS>true</cBoxEFS>
-        <cBoxEFSdl>true</cBoxEFSdl>
+        <cBoxEFSdl>false</cBoxEFSdl>
     </filesConfig>
 </Settings>

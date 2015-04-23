@@ -28,11 +28,11 @@ MainWindow::MainWindow(QWidget *parent)
     setFixedSize(880,330);
     move(200,200);
     setWindowTitle("Fluctu'Action");
-    setWindowIcon(QIcon("fluctu_opt.png"));
+    setWindowIcon(QIcon("../images/fluctu_opt.png"));
 
     /** Ajout d'une image à l'ouverture de l'application */
     QLabel* image = new QLabel(this);
-    image->setPixmap(QPixmap("fluctu2.png"));
+    image->setPixmap(QPixmap("../images/fluctu2.png"));
     image->move(350,100);
     image->setFixedSize(200,200);
 
@@ -47,11 +47,11 @@ MainWindow::MainWindow(QWidget *parent)
 
     /** Le menu A propos */
     helpAct = aboutMenu->addAction( "About", this, SLOT(About()) ) ;
-    helpAct->setIcon(QIcon("fluctu_opt.png"));
+    helpAct->setIcon(QIcon("../images/fluctu_opt.png"));
 
     /** Le menu FAQ */
     aideAct = aboutMenu->addAction( "FAQ", this, SLOT(Aide()) ) ;
-    aideAct->setIcon(QIcon("interro.png"));
+    aideAct->setIcon(QIcon("../images/interro.png"));
 
     toolBar = addToolBar("OutilsBarre");
 
@@ -63,13 +63,13 @@ MainWindow::MainWindow(QWidget *parent)
 
     /** A la modification de la date de filtre, un signal est envoyé pour rafraichir et ré-afficher le tableau filtrer*/
     dateDebut = new QDateEdit(QDate::currentDate(),this);
-    dateDebut->move(350,60);
+    dateDebut->setGeometry(350,60,110,30);
     dateDebut->setCalendarPopup(true);
     dateDebutString = dateDebut->date().toString("dd.MM.yyyy");
     connect(dateDebut, SIGNAL(dateChanged(QDate)), this, SLOT(showEurChf()));
 
     dateFin = new QDateEdit(QDate::currentDate(),this);
-    dateFin->move(460,60);
+    dateFin->setGeometry(460,60,110,30);
     dateFin->setCalendarPopup(true);
     dateFinString = dateFin->date().toString("dd.MM.yyyy");
     connect(dateFin, SIGNAL(dateChanged(QDate)), this, SLOT(showEurChf()));
@@ -83,13 +83,13 @@ MainWindow::MainWindow(QWidget *parent)
 
     /** A la modification de la date de filtre, un signal est envoyé pour rafraichir et ré-afficher le tableau filtrer*/
     dateDebut = new QDateEdit(QDate::currentDate(),this);
-    dateDebut->move(350,60);
+    dateDebut->setGeometry(350,60,110,30);
     dateDebut->setCalendarPopup(true);
     dateDebutString = dateDebut->date().toString("dd.MM.yyyy");
     connect(dateDebut, SIGNAL(dateChanged(QDate)), this, SLOT(showEurUsd()));
 
     dateFin = new QDateEdit(QDate::currentDate(),this);
-    dateFin->move(460,60);
+    dateFin->setGeometry(460,60,110,30);
     dateFin->setCalendarPopup(true);
     dateFinString = dateFin->date().toString("dd.MM.yyyy");
     connect(dateFin, SIGNAL(dateChanged(QDate)), this, SLOT(showEurUsd()));
