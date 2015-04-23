@@ -1,0 +1,134 @@
+\begin{theindex}
+
+  \item {$\sim $\discretionary {-}{}{}Aide}
+    \subitem {Aide}, \hyperpage{7}
+  \item {$\sim $\discretionary {-}{}{}Config}
+    \subitem {Config}, \hyperpage{8}
+  \item {$\sim $\discretionary {-}{}{}Connection\discretionary {-}{}{}D\discretionary {-}{}{}B}
+    \subitem {Connection\discretionary {-}{}{}D\discretionary {-}{}{}B}, 
+		\hyperpage{9}
+  \item {$\sim $\discretionary {-}{}{}Faq}
+    \subitem {Faq}, \hyperpage{10}
+  \item {$\sim $\discretionary {-}{}{}Help}
+    \subitem {Help}, \hyperpage{11}
+  \item {$\sim $\discretionary {-}{}{}Main\discretionary {-}{}{}Window}
+    \subitem {Main\discretionary {-}{}{}Window}, \hyperpage{12}
+
+  \indexspace
+
+  \item {About}
+    \subitem {Main\discretionary {-}{}{}Window}, \hyperpage{12}
+  \item {Aide}, \hyperpage{7}
+    \subitem {$\sim $\discretionary {-}{}{}Aide}, \hyperpage{7}
+    \subitem {Aide}, \hyperpage{7}
+    \subitem {Main\discretionary {-}{}{}Window}, \hyperpage{12}
+  \item {aide.\discretionary {-}{}{}cpp}, \hyperpage{15}
+  \item {aide.\discretionary {-}{}{}h}, \hyperpage{15}
+
+  \indexspace
+
+  \item {Config}, \hyperpage{7}
+    \subitem {$\sim $\discretionary {-}{}{}Config}, \hyperpage{8}
+    \subitem {Config}, \hyperpage{8}
+    \subitem {sauvegarder}, \hyperpage{8}
+  \item {config.\discretionary {-}{}{}cpp}, \hyperpage{15}
+  \item {config.\discretionary {-}{}{}h}, \hyperpage{15}
+  \item {config\discretionary {-}{}{}Url}
+    \subitem {Main\discretionary {-}{}{}Window}, \hyperpage{12}
+  \item {Connection\discretionary {-}{}{}D\discretionary {-}{}{}B}, 
+		\hyperpage{9}
+    \subitem {$\sim $\discretionary {-}{}{}Connection\discretionary {-}{}{}D\discretionary {-}{}{}B}, 
+		\hyperpage{9}
+    \subitem {Connection\discretionary {-}{}{}D\discretionary {-}{}{}B}, 
+		\hyperpage{9}
+    \subitem {Connection\discretionary {-}{}{}D\discretionary {-}{}{}B}, 
+		\hyperpage{9}
+  \item {connectiondb.\discretionary {-}{}{}cpp}, \hyperpage{16}
+  \item {connectiondb.\discretionary {-}{}{}h}, \hyperpage{16}
+
+  \indexspace
+
+  \item {element\discretionary {-}{}{}Search}
+    \subitem {Main\discretionary {-}{}{}Window}, \hyperpage{12}
+
+  \indexspace
+
+  \item {Faq}, \hyperpage{10}
+    \subitem {$\sim $\discretionary {-}{}{}Faq}, \hyperpage{10}
+    \subitem {Faq}, \hyperpage{10}
+  \item {faq.\discretionary {-}{}{}cpp}, \hyperpage{16}
+  \item {faq.\discretionary {-}{}{}h}, \hyperpage{16}
+
+  \indexspace
+
+  \item {Help}, \hyperpage{10}
+    \subitem {$\sim $\discretionary {-}{}{}Help}, \hyperpage{11}
+    \subitem {Help}, \hyperpage{11}
+  \item {help.\discretionary {-}{}{}cpp}, \hyperpage{16}
+  \item {help.\discretionary {-}{}{}h}, \hyperpage{17}
+
+  \indexspace
+
+  \item {load\discretionary {-}{}{}Web\discretionary {-}{}{}View}
+    \subitem {Main\discretionary {-}{}{}Window}, \hyperpage{13}
+
+  \indexspace
+
+  \item {main}
+    \subitem {main.\discretionary {-}{}{}cpp}, \hyperpage{17}
+  \item {main.\discretionary {-}{}{}cpp}, \hyperpage{17}
+    \subitem {main}, \hyperpage{17}
+    \subitem {q2c}, \hyperpage{17}
+  \item {Main\discretionary {-}{}{}Window}, \hyperpage{11}
+    \subitem {$\sim $\discretionary {-}{}{}Main\discretionary {-}{}{}Window}, 
+		\hyperpage{12}
+    \subitem {About}, \hyperpage{12}
+    \subitem {Aide}, \hyperpage{12}
+    \subitem {config\discretionary {-}{}{}Url}, \hyperpage{12}
+    \subitem {element\discretionary {-}{}{}Search}, \hyperpage{12}
+    \subitem {load\discretionary {-}{}{}Web\discretionary {-}{}{}View}, 
+		\hyperpage{13}
+    \subitem {Main\discretionary {-}{}{}Window}, \hyperpage{12}
+    \subitem {Main\discretionary {-}{}{}Window}, \hyperpage{12}
+    \subitem {show\discretionary {-}{}{}Eur\discretionary {-}{}{}Chf}, 
+		\hyperpage{13}
+    \subitem {show\discretionary {-}{}{}Eur\discretionary {-}{}{}Usd}, 
+		\hyperpage{13}
+  \item {mainwindow.\discretionary {-}{}{}cpp}, \hyperpage{17}
+    \subitem {read\discretionary {-}{}{}Xml\discretionary {-}{}{}File}, 
+		\hyperpage{18}
+    \subitem {write\discretionary {-}{}{}Xml\discretionary {-}{}{}File}, 
+		\hyperpage{18}
+  \item {mainwindow.\discretionary {-}{}{}h}, \hyperpage{18}
+    \subitem {read\discretionary {-}{}{}Xml\discretionary {-}{}{}File}, 
+		\hyperpage{18}
+    \subitem {write\discretionary {-}{}{}Xml\discretionary {-}{}{}File}, 
+		\hyperpage{19}
+
+  \indexspace
+
+  \item {q2c}
+    \subitem {main.\discretionary {-}{}{}cpp}, \hyperpage{17}
+
+  \indexspace
+
+  \item {read\discretionary {-}{}{}Xml\discretionary {-}{}{}File}
+    \subitem {mainwindow.\discretionary {-}{}{}cpp}, \hyperpage{18}
+    \subitem {mainwindow.\discretionary {-}{}{}h}, \hyperpage{18}
+
+  \indexspace
+
+  \item {sauvegarder}
+    \subitem {Config}, \hyperpage{8}
+  \item {show\discretionary {-}{}{}Eur\discretionary {-}{}{}Chf}
+    \subitem {Main\discretionary {-}{}{}Window}, \hyperpage{13}
+  \item {show\discretionary {-}{}{}Eur\discretionary {-}{}{}Usd}
+    \subitem {Main\discretionary {-}{}{}Window}, \hyperpage{13}
+
+  \indexspace
+
+  \item {write\discretionary {-}{}{}Xml\discretionary {-}{}{}File}
+    \subitem {mainwindow.\discretionary {-}{}{}cpp}, \hyperpage{18}
+    \subitem {mainwindow.\discretionary {-}{}{}h}, \hyperpage{19}
+
+\end{theindex}

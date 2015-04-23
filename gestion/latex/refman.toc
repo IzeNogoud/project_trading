@@ -1,0 +1,67 @@
+\select@language {french}
+\contentsline {chapter}{\numberline {1}Index hi\IeC {\'e}rarchique}{1}{chapter.1}
+\contentsline {section}{\numberline {1.1}Hi\IeC {\'e}rarchie des classes}{1}{section.1.1}
+\contentsline {chapter}{\numberline {2}Index des classes}{3}{chapter.2}
+\contentsline {section}{\numberline {2.1}Liste des classes}{3}{section.2.1}
+\contentsline {chapter}{\numberline {3}Index des fichiers}{5}{chapter.3}
+\contentsline {section}{\numberline {3.1}Liste des fichiers}{5}{section.3.1}
+\contentsline {chapter}{\numberline {4}Documentation des classes}{7}{chapter.4}
+\contentsline {section}{\numberline {4.1}R\IeC {\'e}f\IeC {\'e}rence de la classe Aide}{7}{section.4.1}
+\contentsline {subsection}{\numberline {4.1.1}Documentation des constructeurs et destructeur}{7}{subsection.4.1.1}
+\contentsline {subsubsection}{\numberline {4.1.1.1}Aide}{7}{subsubsection.4.1.1.1}
+\contentsline {subsubsection}{\numberline {4.1.1.2}$\sim $\discretionary {-}{}{}Aide}{7}{subsubsection.4.1.1.2}
+\contentsline {section}{\numberline {4.2}R\IeC {\'e}f\IeC {\'e}rence de la classe Config}{7}{section.4.2}
+\contentsline {subsection}{\numberline {4.2.1}Documentation des constructeurs et destructeur}{8}{subsection.4.2.1}
+\contentsline {subsubsection}{\numberline {4.2.1.1}Config}{8}{subsubsection.4.2.1.1}
+\contentsline {subsubsection}{\numberline {4.2.1.2}$\sim $\discretionary {-}{}{}Config}{8}{subsubsection.4.2.1.2}
+\contentsline {subsection}{\numberline {4.2.2}Documentation des fonctions membres}{8}{subsection.4.2.2}
+\contentsline {subsubsection}{\numberline {4.2.2.1}sauvegarder}{8}{subsubsection.4.2.2.1}
+\contentsline {section}{\numberline {4.3}R\IeC {\'e}f\IeC {\'e}rence de la classe Connection\discretionary {-}{}{}D\discretionary {-}{}{}B}{9}{section.4.3}
+\contentsline {subsection}{\numberline {4.3.1}Documentation des constructeurs et destructeur}{9}{subsection.4.3.1}
+\contentsline {subsubsection}{\numberline {4.3.1.1}Connection\discretionary {-}{}{}D\discretionary {-}{}{}B}{9}{subsubsection.4.3.1.1}
+\contentsline {subsubsection}{\numberline {4.3.1.2}$\sim $\discretionary {-}{}{}Connection\discretionary {-}{}{}D\discretionary {-}{}{}B}{9}{subsubsection.4.3.1.2}
+\contentsline {section}{\numberline {4.4}R\IeC {\'e}f\IeC {\'e}rence de la classe Faq}{10}{section.4.4}
+\contentsline {subsection}{\numberline {4.4.1}Documentation des constructeurs et destructeur}{10}{subsection.4.4.1}
+\contentsline {subsubsection}{\numberline {4.4.1.1}Faq}{10}{subsubsection.4.4.1.1}
+\contentsline {subsubsection}{\numberline {4.4.1.2}$\sim $\discretionary {-}{}{}Faq}{10}{subsubsection.4.4.1.2}
+\contentsline {section}{\numberline {4.5}R\IeC {\'e}f\IeC {\'e}rence de la classe Help}{10}{section.4.5}
+\contentsline {subsection}{\numberline {4.5.1}Documentation des constructeurs et destructeur}{11}{subsection.4.5.1}
+\contentsline {subsubsection}{\numberline {4.5.1.1}Help}{11}{subsubsection.4.5.1.1}
+\contentsline {subsubsection}{\numberline {4.5.1.2}$\sim $\discretionary {-}{}{}Help}{11}{subsubsection.4.5.1.2}
+\contentsline {section}{\numberline {4.6}R\IeC {\'e}f\IeC {\'e}rence de la classe Main\discretionary {-}{}{}Window}{11}{section.4.6}
+\contentsline {subsection}{\numberline {4.6.1}Documentation des constructeurs et destructeur}{12}{subsection.4.6.1}
+\contentsline {subsubsection}{\numberline {4.6.1.1}Main\discretionary {-}{}{}Window}{12}{subsubsection.4.6.1.1}
+\contentsline {subsubsection}{\numberline {4.6.1.2}$\sim $\discretionary {-}{}{}Main\discretionary {-}{}{}Window}{12}{subsubsection.4.6.1.2}
+\contentsline {subsection}{\numberline {4.6.2}Documentation des fonctions membres}{12}{subsection.4.6.2}
+\contentsline {subsubsection}{\numberline {4.6.2.1}About}{12}{subsubsection.4.6.2.1}
+\contentsline {subsubsection}{\numberline {4.6.2.2}Aide}{12}{subsubsection.4.6.2.2}
+\contentsline {subsubsection}{\numberline {4.6.2.3}config\discretionary {-}{}{}Url}{12}{subsubsection.4.6.2.3}
+\contentsline {subsubsection}{\numberline {4.6.2.4}element\discretionary {-}{}{}Search}{13}{subsubsection.4.6.2.4}
+\contentsline {subsubsection}{\numberline {4.6.2.5}load\discretionary {-}{}{}Web\discretionary {-}{}{}View}{13}{subsubsection.4.6.2.5}
+\contentsline {subsubsection}{\numberline {4.6.2.6}show\discretionary {-}{}{}Eur\discretionary {-}{}{}Chf}{13}{subsubsection.4.6.2.6}
+\contentsline {subsubsection}{\numberline {4.6.2.7}show\discretionary {-}{}{}Eur\discretionary {-}{}{}Usd}{13}{subsubsection.4.6.2.7}
+\contentsline {chapter}{\numberline {5}Documentation des fichiers}{15}{chapter.5}
+\contentsline {section}{\numberline {5.1}R\IeC {\'e}f\IeC {\'e}rence du fichier aide.\discretionary {-}{}{}cpp}{15}{section.5.1}
+\contentsline {section}{\numberline {5.2}R\IeC {\'e}f\IeC {\'e}rence du fichier aide.\discretionary {-}{}{}h}{15}{section.5.2}
+\contentsline {section}{\numberline {5.3}R\IeC {\'e}f\IeC {\'e}rence du fichier config.\discretionary {-}{}{}cpp}{15}{section.5.3}
+\contentsline {section}{\numberline {5.4}R\IeC {\'e}f\IeC {\'e}rence du fichier config.\discretionary {-}{}{}h}{15}{section.5.4}
+\contentsline {section}{\numberline {5.5}R\IeC {\'e}f\IeC {\'e}rence du fichier connectiondb.\discretionary {-}{}{}cpp}{16}{section.5.5}
+\contentsline {section}{\numberline {5.6}R\IeC {\'e}f\IeC {\'e}rence du fichier connectiondb.\discretionary {-}{}{}h}{16}{section.5.6}
+\contentsline {section}{\numberline {5.7}R\IeC {\'e}f\IeC {\'e}rence du fichier faq.\discretionary {-}{}{}cpp}{16}{section.5.7}
+\contentsline {section}{\numberline {5.8}R\IeC {\'e}f\IeC {\'e}rence du fichier faq.\discretionary {-}{}{}h}{16}{section.5.8}
+\contentsline {section}{\numberline {5.9}R\IeC {\'e}f\IeC {\'e}rence du fichier help.\discretionary {-}{}{}cpp}{16}{section.5.9}
+\contentsline {section}{\numberline {5.10}R\IeC {\'e}f\IeC {\'e}rence du fichier help.\discretionary {-}{}{}h}{17}{section.5.10}
+\contentsline {section}{\numberline {5.11}R\IeC {\'e}f\IeC {\'e}rence du fichier main.\discretionary {-}{}{}cpp}{17}{section.5.11}
+\contentsline {subsection}{\numberline {5.11.1}Documentation des macros}{17}{subsection.5.11.1}
+\contentsline {subsubsection}{\numberline {5.11.1.1}q2c}{17}{subsubsection.5.11.1.1}
+\contentsline {subsection}{\numberline {5.11.2}Documentation des fonctions}{17}{subsection.5.11.2}
+\contentsline {subsubsection}{\numberline {5.11.2.1}main}{17}{subsubsection.5.11.2.1}
+\contentsline {section}{\numberline {5.12}R\IeC {\'e}f\IeC {\'e}rence du fichier mainwindow.\discretionary {-}{}{}cpp}{17}{section.5.12}
+\contentsline {subsection}{\numberline {5.12.1}Documentation des fonctions}{18}{subsection.5.12.1}
+\contentsline {subsubsection}{\numberline {5.12.1.1}read\discretionary {-}{}{}Xml\discretionary {-}{}{}File}{18}{subsubsection.5.12.1.1}
+\contentsline {subsubsection}{\numberline {5.12.1.2}write\discretionary {-}{}{}Xml\discretionary {-}{}{}File}{18}{subsubsection.5.12.1.2}
+\contentsline {section}{\numberline {5.13}R\IeC {\'e}f\IeC {\'e}rence du fichier mainwindow.\discretionary {-}{}{}h}{18}{section.5.13}
+\contentsline {subsection}{\numberline {5.13.1}Documentation des fonctions}{18}{subsection.5.13.1}
+\contentsline {subsubsection}{\numberline {5.13.1.1}read\discretionary {-}{}{}Xml\discretionary {-}{}{}File}{19}{subsubsection.5.13.1.1}
+\contentsline {subsubsection}{\numberline {5.13.1.2}write\discretionary {-}{}{}Xml\discretionary {-}{}{}File}{19}{subsubsection.5.13.1.2}
+\contentsline {chapter}{Index}{20}{section*.32}
