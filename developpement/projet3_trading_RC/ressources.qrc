@@ -1,7 +1,7 @@
 <RCC>
     <qresource prefix="/images">
-        <file>../images/fluctu2.png</file>
-        <file>../images/fluctu_opt.png</file>
-        <file>../images/interro.png</file>
+        <file>images/fluctu2.png</file>
+        <file>images/fluctu_opt.png</file>
+        <file>images/interro.png</file>
     </qresource>
 </RCC>
