@@ -30,7 +30,7 @@ Faq::Faq(QWidget *parent) : QDialog(parent)
     QLabel *englishText = new QLabel;
 
     /** Insertion du texte en français */
-    frenchText->setText("<b><i>Comment utiliser Flutu'Action ?</i></b><br /><br />"
+    frenchText->setText("<b><i>Comment utiliser Fluctu'Action ?</i></b><br /><br />"
                         "Fluctu'Action est une application permettant de suivre en temps réel"
                         " l'évolution des cotations, en recherchant dynamiquement<br /> les données sur"
                         "http://www.forexpro.com.<br /><br /><br />"
